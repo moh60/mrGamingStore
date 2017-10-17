@@ -11,11 +11,10 @@
 <body>
 <div class="wrap">
 	<div class="search">
-		 <form class="search" action="http://thegamesdb.net/search/" autocomplete="off">
-		 	<input type="text" class="searchTerm" placeholder="Search Games...">
+		 <form class="search" action="SearchServlet" method="post" autocomplete="off">
+		 	<input type="text" class="searchTerm" name="game_name" placeholder="Search Games...">
 		 	<button type="submit" class="searchButton">
 				<i class="glyphicon glyphicon-search"></i>
-	 			<div id="ajaxSearchResults"></div>
 		 	</button>
 		 <input type="hidden" name="function" value="Search">
 		 </form>
