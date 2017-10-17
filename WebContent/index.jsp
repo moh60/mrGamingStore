@@ -12,11 +12,21 @@
 <div class="wrap">
 	<div class="search">
 		 <form class="search" action="SearchServlet" method="post" autocomplete="off">
+		 	<div class="search-filters">
+		 		<button type="button" class="btn btn-primary btn-lg advance-search" role="button" data-toggle="collapse" data-target="#advance-search">Advance Search</button>
+			 	<div id="advance-search" class="collapse">
+			 	<input type="radio" class="filter" name="filter-game" value="console">Console<br>
+  				<input type="radio" class="filter" name="filter-game" value="year">Year<br>
+  				<input type="radio" class="filter" name="filter-game" value="genre">Genre<br>
+  				<input type="radio" class="filter" name="filter-game" value="publisher">Publisher<br>			 	
+			 	</div>
+			</div>
 		 	<input type="text" class="searchTerm" name="game_name" placeholder="Search Games...">
 		 	<button type="submit" class="searchButton">
+		 	
 				<i class="glyphicon glyphicon-search"></i>
 		 	</button>
-		 <input type="hidden" name="function" value="Search">
+			<input type="hidden" name="function" value="Search">
 		 </form>
 	</div>
 </div>
