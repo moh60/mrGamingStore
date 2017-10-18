@@ -54,3 +54,19 @@
     font-weight: normal;
     cursor: pointer;
 }
+.filter-selection {
+	display: inline-block;
+    padding: 5px;
+    color: #3fa9f5;
+}
+.advance-search:hover {
+	background-color: #337ab7;
+	outline: none;
+}
+.advance-search:focus {
+	background-color: #3fa9f5;
+	outline: none !important;
+}
+input[type="radio"]:checked {
+    
+}

@@ -9,24 +9,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/searchResult.css">
 <title>Games Result</title>
 </head>
 <body>
-<%= request.getAttribute("games")%>
-<%List eList = (List)request.getAttribute("games");%>
-    
-<table>
-<%  %>
-    <% for(int i=0; i<eList.size();i++){%>
-        <tr>
-            <td>
-            <%
-            SearchInfo gameInfo = (SearchInfo)eList.get(i);
-            out.print(gameInfo.getGameName());            	
-            %>
-            </td>
-        </tr>
+<%List gamesList = (List)request.getAttribute("games");%>
+ <div class="game-result-wrapper">
+    <% for(int i=0; i<gamesList.size(); i++){%>
+	    <div class="game-result">
+		    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
+		    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    
+			<span class="game-release"><%out.print(gameInfo.getGameReleaseDate()); %></span>
+			<h3 class="game-title"><%out.print(gameInfo.getGameName().toUpperCase()); %></h3>
+			<p class="game-description"><%out.print(gameInfo.getGameDescription()); %></p>
+	      </div> 
       <%}%>
-</table>
+ </div>
 </body>
 </html>

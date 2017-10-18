@@ -17,11 +17,14 @@ public class SearchServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// GET user search info
-		String game_name = request.getParameter("game_name");
-		System.out.println("1 " + game_name);
+		String query = request.getParameter("query");
+		String filter_type = request.getParameter("filter-game");
+		
 		// object which contains user's sign up information
 		SearchInfo searchInfo = new SearchInfo(); 
-		searchInfo.setGameName(game_name);
+		searchInfo.setQuery(query);
+		searchInfo.setFilter_type(filter_type);
+		
 		//creating object for SearchConnection. This class contains main logic for retriving game search result
 		SearchConnection searchConnection = new SearchConnection(); 
 		//Calling authenticateUser function
@@ -31,9 +34,11 @@ public class SearchServlet extends HttpServlet {
 			try {
 				while(searchQuery.next()) {
 					SearchInfo gameInfo = new SearchInfo(); 
-//					System.out.println(searchQuery.getString(1) + " " + searchQuery.getString(2));
 					gameInfo.setGameID(searchQuery.getString(1));
 					gameInfo.setGameName(searchQuery.getString(2));
+					gameInfo.setGameDescription(searchQuery.getString(3));
+					gameInfo.setGameReleaseDate(searchQuery.getString(8));
+					gameInfo.setGameFrontBoxArt(searchQuery.getString(11));
 					games.add(gameInfo);
 				}
 			} catch (SQLException e) {

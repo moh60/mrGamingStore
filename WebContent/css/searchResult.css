@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+.game-result-wrapper {
+	text-align: center;
+    width: 800px;
+    padding: 15px;
+    margin: 30px auto;
+    background-color: lightgrey;
+    border: 1px solid darkgray;
+    color: black;
+}
+.game-result {
+	padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    background-color: white;
+    text-align: left !important;
+    border-radius: 6px;
+    height: 125px;
+}
+.game-cover {
+	text-align: center;
+    padding-right: 10px;
+    float: left;
+}
+.game-title {
+	margin-top: 10px;
+    margin: 0px;
+}
+.game-description {
+	text-align: justify;
+}
+.game-release {
+	float: right;
+    background-color: darkgray;
+    padding: 6px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+    box-shadow: 0px 0px 6px black;
+}
