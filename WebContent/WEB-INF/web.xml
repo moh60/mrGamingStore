@@ -61,4 +61,15 @@
     <servlet-name>GameServlet</servlet-name>
     <url-pattern>/GameServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>DiscountsServlet</display-name>
+    <servlet-name>DiscountsServlet</servlet-name>
+    <servlet-class>controller.DiscountsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DiscountsServlet</servlet-name>
+    <url-pattern>/DiscountsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

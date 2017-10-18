@@ -25,12 +25,9 @@
 				<p class="nav_tagline">An open, online video games store</p>		
 			</div>
 		<div id="navbar-collapse">
-			<!-- menu -->
-			<a class="btn btn-primary btn-lg menu-button" role="button">
-				<i class="glyphicon glyphicon-chevron-right"></i>
-				Menu			
-			</a>	
-			<%
+			<!-- menu -->			
+				<button type="button" class="btn btn-primary btn-lg advance-search" role="button" data-toggle="collapse" data-target="#menu-search">MENU</button>
+		 	<%
 				//out.print(request.getSession().getAttribute("userEmail"));
 				if(request.getSession().getAttribute("userEmail") != null){  
 				    out.print("<a class='btn btn-primary btn-lg signup-button' href='LogoutServlet' role='button'>Logout</a>");
@@ -40,6 +37,10 @@
 				 	out.print("<a class='btn btn-primary btn-lg signup-button' href='signup.jsp' role='button'> Sign Up</a>");
 				}		 
 			%>			
+			<div id="menu-search" class="collapse">
+				<a href="DiscountsServlet">Discounts</a>
+			</div>
+			
 		</div>
 		</div>		
 	</nav>	

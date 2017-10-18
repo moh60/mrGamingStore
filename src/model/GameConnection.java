@@ -35,4 +35,26 @@ public class GameConnection {
 		// no match found
 		return null; 
 	}
+	
+	public ResultSet retriveDiscountGames() {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			//fetch  gameObject by game_id by sql query and store it in a resultSet
+		    PreparedStatement query = con.prepareStatement("SELECT * from game where discount > 0");
+			resultSet = query.executeQuery();
+		    // found games
+			return resultSet; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no match found
+		return null; 
+	}
 }
