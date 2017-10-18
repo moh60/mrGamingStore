@@ -8,35 +8,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/detailedGame.css">
 <title>Game</title>
 </head>
 <body>
 <%List gamesList = (List)request.getAttribute("game");%>
- <div class="game-wrapper">
-    <% for(int i=0; i<gamesList.size(); i++){%>
-    <div class="game-head">
+<div class="main">
+	<div class="game-wrapper">
+	   <% for(int i=0; i<gamesList.size(); i++){%>
+	   <div class="game-head">
 	<% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
-    	<div class="game-title"><%out.print(gameInfo.getGameName().toUpperCase()); %></div>
+	   	<div class="game-title"><%out.print(gameInfo.getGameName().toUpperCase()); %></div>
 	    	<div class="game-cover-wrapper">
-	    			<div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="box-art" height="102" width="102" alt="gameFrontCover"></div>		    
-					<div class="game-cover"><img src="<%=gameInfo.getGameBackBoxArt()%>" class="box-art" height="102" width="102" alt="gameBackCover"></div>		    
-    		</div>
-   		<div class="game-info">
+	    			<div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="box-art" height="424" width="300" alt="gameFrontCover"></div>		    
+					<div class="game-cover"><img src="<%=gameInfo.getGameBackBoxArt()%>" style="display: none;" class="box-art" height="424" width="300" alt="gameBackCover"></div>		    
+	   		</div>
+	  		<div class="game-info">
 			<p class="game-description"><%out.print(gameInfo.getGameDescription()); %></p>
-   		</div>
-   		<div class="game-vitals">
-   			<p>
-   				<span class="game-players">Players: <%out.print(gameInfo.getGameNumOfPlayers()); %></span>
-   			    <span class="game-coop">Coop: <%out.print(gameInfo.getGameCoop()); %></span>
-   			    <span class="game-release">Release Date: <%out.print(gameInfo.getGameReleaseDate()); %></span>
-   			    <span class="game-developer">Developer: <%out.print(gameInfo.getGameDeveloper()); %></span>
-   			    <span class="game-developer-logo"><img src="<%=gameInfo.getGameDeveloperLogo()%>" class="logo" height="102" width="102" alt="developerLogo"></span>		    
-				<span class="game-publisher">Publisher: <%out.print(gameInfo.getGamePublisher()); %></span>
-				<span class="game-pubisher-logo"><img src="<%=gameInfo.getGameLogo()%>" class="logo" height="102" width="102" alt="publisherLogo"></span>		    
-   			</p>
-   		</div>
-	</div> 
-      <%}%>
- </div>
+	  		</div>
+	  		<div class="logo"><img src="<%=gameInfo.getGameLogo()%>" class="logo" height="102" width="102" alt="publisherLogo"></div>		       			    
+	    	<div class="logo"><img src="<%=gameInfo.getGameDeveloperLogo()%>" class="logo" height="102" width="102" alt="developerLogo"></div>		    
+	  		<div class="game-vitals">
+	  			<p>
+	  				<span class="game-sub-info">Players: <%out.print(gameInfo.getGameNumOfPlayers()); %></span><br/>
+	  			    <span class="game-sub-info">Coop: <%out.print(gameInfo.getGameCoop()); %></span><br/>
+	  			    <span class="game-sub-info">Release Date: <%out.print(gameInfo.getGameReleaseDate()); %></span><br/>
+	  			    <span class="game-sub-info">Developer: <%out.print(gameInfo.getGameDeveloper()); %></span><br/>
+	  			    <span class="game-sub-info">Publisher: <%out.print(gameInfo.getGamePublisher()); %></span><br/>
+	  			</p>
+	  		</div>
+  		</div>		
+	   <%}%>
+	</div>
+</div>
 </body>
 </html>
