@@ -33,8 +33,19 @@ public class GameServlet extends HttpServlet {
 					gameInfo.setGameID(gameObject.getString(1));
 					gameInfo.setGameName(gameObject.getString(2));
 					gameInfo.setGameDescription(gameObject.getString(3));
+					gameInfo.setGameConsole(gameObject.getString(4));
+					gameInfo.setGameNumOfPlayers(gameObject.getString(5));
+					gameInfo.setGameCoop(gameObject.getString(6));
+					gameInfo.setGameGenre(gameObject.getString(7));				
 					gameInfo.setGameReleaseDate(gameObject.getString(8));
+					gameInfo.setGameDeveloper(gameObject.getString(9));
+					gameInfo.setGamePublisher(gameObject.getString(10));
 					gameInfo.setGameFrontBoxArt(gameObject.getString(11));
+					gameInfo.setGameBackBoxArt(gameObject.getString(12));
+					gameInfo.setGameLogo(gameObject.getString(13));
+					gameInfo.setGameDeveloperLogo(gameObject.getString(14));
+					gameInfo.setGamePrice(gameObject.getString(15));
+					gameInfo.setGameDiscount(gameObject.getString(16));
 					game.add(gameInfo);
 				}
 			} catch (SQLException e) {
