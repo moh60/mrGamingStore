@@ -22,3 +22,19 @@
     margin-bottom: 10px;
     outline: none;
 }
+.login-button {
+	background: #3fa9f5;
+    outline: none;
+    border: none;
+}
+.login-button:hover {
+	background-color: #337ab7;
+}
+.reset-button {
+	background: orange;
+    outline: none;
+    border: none;
+}
+.reset-button:hover {
+	background-color: orangered;
+}

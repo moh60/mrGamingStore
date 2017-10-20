@@ -14,8 +14,8 @@ pageEncoding="ISO-8859-1"%>
 		<form name="form" action="LoginServlet" method="post" onsubmit="return validate()">
 			<input type="text" name="email" size="25" maxlength="40" placeholder="Email" class="user-info"  />
 			<input type="password" name="password" size="25" maxlength="20" placeholder="Password" class="user-info" />
-			<br/><input type="submit" value="Login" class="login-button"></input>
-			<input type="reset" value="Reset" class="reset-button"></input>
+			<br/><input type="submit" value="Login" class="btn btn-primary btn-lg login-button"></input>
+			<input type="reset" value="Reset" class="btn btn-primary btn-lg reset-button"></input>
 		</form>
 	</div>
 </body>
