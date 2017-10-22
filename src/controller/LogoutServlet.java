@@ -15,7 +15,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(); 
 		//If session is not null
 		if(session!=null) {
-			System.out.println(session);
+			//System.out.println(session);
 			//removes all session attributes bound to the session
 			session.invalidate(); 
 			request.setAttribute("errMessage", "You have logged out successfully");

@@ -36,23 +36,18 @@
 						<input type="text" name="country" size="25" maxlength="20" placeholder="Country" class="user-addr"  />
 					</div>
 					<div id="tab3" class="tab">
-						<label class="user-payment">Cerdit Card Type</label>
-							<select name="credit_card_type" class="credit-type">
-						        <option value="master">Master Card</option>
-						        <option value="visa">Visa</option>
-						     </select>														    
-					    <label class="user-payment">Cerdit Card Number</label>
-						<input class="inputCard" type="text" name="credit_card_number" maxlength="16" />			
-							
-						<label class="user-payment">Cerdit Card Cvv</label>
-						<input type="text" name="credit_card_cvv" size="3" maxlength="3" />
-						
-						<label class="user-payment">Cerdit Card Expiry (mm-yyyy)</label>
-						<input class="inputCard" type="text" name="credit_card_expiry_month" size="4" maxlength="2"/>
-						<input class="inputCard" type="text" name="credit_card_expiry_year" size="4" maxlength="4"/>			
+						<select name="credit_card_type" class="credit-type" id="credit-input">
+    						<option value="" disabled selected>Select Credit Card Type</option>
+					        <option value="master">Master Card</option>
+					        <option value="visa">Visa</option>
+					     </select><br/>
+					    <input class="inputCard" type="text" placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" id="credit-input" /><br/>										
+						<input type="text" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" id="credit-input" />						
+						<input class="inputCard" type="text" placeholder="mm" name="credit_card_expiry_month" size="4" maxlength="2" id="credit-input"/>
+						<input class="inputCard" type="text" placeholder="yyyy" name="credit_card_expiry_year" size="4" maxlength="4" id="credit-input"/><br/>			
 						
 						<!-- submit sign up form -->
-						<input type="submit" name="submit" value="Submit" />						
+						<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" />						
 					</div>
 				</form>
 		</div>

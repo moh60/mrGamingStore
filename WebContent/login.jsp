@@ -12,8 +12,8 @@ pageEncoding="ISO-8859-1"%>
 <body>
 	<div class="login-wrapper">
 		<form name="form" action="LoginServlet" method="post" onsubmit="return validate()">
-			<input type="text" name="email" size="25" maxlength="40" placeholder="Email" class="user-info"  />
-			<input type="password" name="password" size="25" maxlength="20" placeholder="Password" class="user-info" />
+			<input type="text" name="email" size="25" maxlength="40" placeholder="Email" class="user-info" id="user-email"  />
+			<input type="password" name="password" size="25" maxlength="20" placeholder="Password" class="user-info" id="user-password" />
 			<br/><input type="submit" value="Login" class="btn btn-primary btn-lg login-button"></input>
 			<input type="reset" value="Reset" class="btn btn-primary btn-lg reset-button"></input>
 		</form>

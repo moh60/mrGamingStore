@@ -25,17 +25,18 @@
 	   		</div>
 	  		<div class="game-info">
 			<p class="game-description"><%out.print(gameInfo.getGameDescription()); %></p>
-	  		</div>
 	  		<div class="game-vitals">
 	  			<div>
+	  				<span class="game-sub-info">Console: <%out.print(gameInfo.getGameConsole()); %></span><br/>
 	  				<span class="game-sub-info">Players: <%out.print(gameInfo.getGameNumOfPlayers()); %></span><br/>
 	  			    <span class="game-sub-info">Coop: <%out.print(gameInfo.getGameCoop()); %></span><br/>
 	  			    <span class="game-sub-info">Release Date: <%out.print(gameInfo.getGameReleaseDate()); %></span><br/>
 	  			    <span class="game-sub-info">Developer: <%out.print(gameInfo.getGameDeveloper()); %></span>
-	  			    <div class="logo"><img src="<%=gameInfo.getGameDeveloperLogo()%>" class="logo" height="102" width="102" alt="developerLogo"></div><br/>		       			    	  			  
+	  			    <div class="logo"><img src="<%=gameInfo.getGameDeveloperLogo()%>" class="logo" height="78" width="auto" alt="developerLogo"></div><br/>		       			    	  			  
 	  			    <span class="game-sub-info">Publisher: <%out.print(gameInfo.getGamePublisher()); %></span>
-	  			    <div class="logo"><img src="<%=gameInfo.getGameLogo()%>" class="logo" height="102" width="102" alt="logo"></div><br/>
+	  			    <div class="logo"><img src="<%=gameInfo.getGameLogo()%>" class="logo" height="78" width="auto" alt="logo"></div><br/>
 	  			</div>
+	  		</div>
 	  		</div>
   		</div>		
 	   <%}%>

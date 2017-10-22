@@ -41,10 +41,8 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			//If authenticateUser() function returns other than SUCCESS string it will be sent to Login page again. Here the error message returned from function has been stored in a errMessage key.
-			System.out.println("invalid");
-			request.setAttribute("errMessage", userValidate); 
-			//forwarding the request
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			System.out.println("invalid login credentials");
+			response.sendRedirect("login.jsp");
 		}
 	}
 }
