@@ -19,8 +19,8 @@
 		    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
 		    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    
 			<span class="game-release"><%out.print(gameInfo.getGameReleaseDate().substring(0, gameInfo.getGameReleaseDate().indexOf("-"))); %></span>
-			<span class="game-release"><%out.print(gameInfo.getGamePrice()); %></span>
-			<span class="game-release"><%out.print(gameInfo.getGameDiscount()); %></span>
+			<span class="game-release-price">$<%out.print(gameInfo.getGamePrice()); %></span>
+			<span class="game-release-discount"><%out.print(gameInfo.getGameDiscount()); %>%</span>
 			<h3 class="game-title"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></h3>
 	      </div> 
       <%}%>

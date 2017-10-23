@@ -39,3 +39,21 @@
     font-weight: bold;
     margin-left: 10px;
 }
+.game-release-price {
+	float: right;
+    background-color: green;
+    padding: 6px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.game-release-discount {
+	float: right;
+    background-color: red;
+    padding: 6px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+}

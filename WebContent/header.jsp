@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="icon" href="favicon.ico" /> 
+<link rel="shortcut icon" href="assets/images/icon.jpg?" type="image/x-icon" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 </head>
 <body>
