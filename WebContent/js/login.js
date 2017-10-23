@@ -5,7 +5,7 @@ function validate() {
 	var emailValidation = emailRegex.test(email);
 	
 	if (email==null || email=="" || emailValidation==false) { 
-		$('#user-email').attr('style', "border-bottom:1px solid red;");
+		$('#user-email').attr('style', "border-bottom:1px solid red;");		
 		return false; 
 	}
 	else if(password==null || password=="") { 

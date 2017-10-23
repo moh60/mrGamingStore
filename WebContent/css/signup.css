@@ -90,3 +90,10 @@ li.active a, li.active a:hover {
 	outline: none;
 	border: none;
 }
+.signup {
+	margin: 0 auto;
+    max-width: 400px;
+    position: relative;
+    border: none;
+    padding: 10px;
+}

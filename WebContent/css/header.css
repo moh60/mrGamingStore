@@ -2,3 +2,7 @@
 #menu-search {
 	margin-top: 5px;
 }
+a:focus, a:hover {
+	outline: none;
+	text-decoration: none;
+}
