@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import controller.LoginInfo;
 import db.DBConnection;
 
 //this class handles the logic for creating temporary user with password
 public class temporaryChangeConnection {
-	public ResultSet createTemporaryUser(LoginInfo passInfo) {
+	public String createTemporaryUser(LoginInfo passInfo) {
 		// store users login info in variables
 		String userEmail = passInfo.getUserEmail();
 		// intialize connection
@@ -37,19 +38,19 @@ public class temporaryChangeConnection {
 			System.out.println(user_id_DB);
 			
 			//  create temporary user
-//			ps = con.prepareStatement(
-//					"insert into temporarylogin values(?,?,?)");  
-//			ps.setString(1, user_id_DB);  
-//			ps.setString(2, userPassDB);  
-//			ps.setString(3, dateDB);  		
-//			int i = ps.executeUpdate();  
-//			if(i>0) {
-//				System.out.print("Successfully registered temporary user");  
-//			}
+			ps = con.prepareStatement(
+					"insert into temporarylogin values(?,?,?)");  
+			ps.setString(1, user_id_DB);  
+			ps.setString(2, userPassDB);  
+			ps.setString(3, dateDB);  		
+			int i = ps.executeUpdate();  
+			if(i>0) {
+				System.out.print("Successfully registered temporary user");  
+			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return resultSet;	
+		return userPassDB;	
 	}
 }

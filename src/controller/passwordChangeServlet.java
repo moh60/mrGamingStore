@@ -36,19 +36,11 @@ public class passwordChangeServlet extends HttpServlet {
 		userInfo.setUserEmail(userEmail);
 		// creating model object for temporary user.
 		temporaryChangeConnection temporaryUser = new temporaryChangeConnection();
-		ResultSet rs = temporaryUser.createTemporaryUser(userInfo);
-
-		try {
-			while (rs.next()) {
-				updatedUserPass = rs.getString("password");
-			}
-			String toEmail = "mohd_theo_60@hotmail.com";
-			String subject = "Reset Password";
-			String msg = "Temporary Password: " + updatedUserPass;
-			Mail.sendEmail(toEmail, subject, msg);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		updatedUserPass = temporaryUser.createTemporaryUser(userInfo);
+		String toEmail = "mohd_theo_60@hotmail.com";
+		String subject = "Reset Password";
+		String msg = "Temporary Password: " + updatedUserPass;
+		System.out.println(msg);
+		Mail.sendEmail(toEmail, subject, msg);
 	}
 }
