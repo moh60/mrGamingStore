@@ -45,8 +45,15 @@ public class temporaryChangeConnection {
 			ps.setString(3, dateDB);  		
 			int i = ps.executeUpdate();  
 			if(i>0) {
-				System.out.print("Successfully registered temporary user");  
+				System.out.println("Successfully registered temporary user");  
 			}
+			// unlock user and set forgot pass
+			ps = con.prepareStatement("UPDATE users SET isLocked = ?, forgot_pass = ?  WHERE users.email = ?");
+			ps.setInt(1, 0);
+			ps.setBoolean(2, true);
+			ps.setString(3, userEmail);
+			ps.executeUpdate();
+			System.out.println("User's account is unlocked");  
 		}
 		catch(SQLException e) {
 			e.printStackTrace();

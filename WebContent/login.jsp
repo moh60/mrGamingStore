@@ -17,7 +17,7 @@ pageEncoding="ISO-8859-1"%>
 			<br/><input type="submit" value="Login" class="btn btn-primary btn-lg login-button"></input>
 			<input type="reset" value="Reset" class="btn btn-primary btn-lg reset-button"></input>
 		</form>
-		<a href="passwordChange.jsp" class="btn btn-primary btn-lg reset-button"><span>Forgot your password?</span></a>
+		<a href="passwordChange.jsp" class="btn btn-primary btn-lg fp-button"><span>Forgot your password?</span></a>
 	</div>
 </body>
 </html>

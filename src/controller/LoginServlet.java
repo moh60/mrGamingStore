@@ -39,9 +39,15 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			
 		}
+		else if (userValidate.equals("LOCKED")) {
+			System.out.println("User Account is Locked");
+			response.sendRedirect("login.jsp");
+		}
 		else {
 			//If authenticateUser() function returns other than SUCCESS string it will be sent to Login page again. Here the error message returned from function has been stored in a errMessage key.
 			System.out.println("invalid login credentials");
+			// increase user lock counter
+			loginConnection.lockUser(loginInfo);
 			response.sendRedirect("login.jsp");
 		}
 	}

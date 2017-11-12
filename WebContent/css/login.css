@@ -28,7 +28,7 @@
     border: none;
 }
 .login-button:hover {
-	background-color: #337ab7;
+	background-color: green;
 }
 .reset-button {
 	background: orange;
@@ -36,5 +36,14 @@
     border: none;
 }
 .reset-button:hover {
-	background-color: orangered;
+	background-color: green;
+}
+.fp-button {
+	background: red;
+    outline: none;
+    border: none;
+    margin-top: 5px;
+}
+.fp-button:hover {
+	background-color: green;
 }

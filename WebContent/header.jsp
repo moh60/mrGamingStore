@@ -32,15 +32,14 @@
 				//out.print(request.getSession().getAttribute("userEmail"));
 				if(request.getSession().getAttribute("userEmail") != null){  
 				    out.print("<a class='btn btn-primary btn-lg signup-button' href='LogoutServlet' role='button'>Logout</a>");
-	 			 } 
+	 				out.print("<div id='menu-search' class='collapse'>" +
+	 							"<a href='DiscountsServlet'>Discounts</a></div>"); 
+				} 
 				else {
 					out.print("<a class='btn btn-primary btn-lg login-button' href='login.jsp' role='button'> Log in</a>");
 				 	out.print("<a class='btn btn-primary btn-lg signup-button' href='signup.jsp' role='button'> Sign Up</a>");
 				}		 
 			%>			
-			<div id="menu-search" class="collapse">
-				<a href="DiscountsServlet">Discounts</a>
-			</div>
 			
 		</div>
 		</div>		
