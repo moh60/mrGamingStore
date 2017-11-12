@@ -20,7 +20,7 @@ public class SearchServlet extends HttpServlet {
 		String query = request.getParameter("query");
 		String filter_type = request.getParameter("filter-game");
 		
-		// object which contains user's sign up information
+		// object which contains search information
 		SearchInfo searchInfo = new SearchInfo(); 
 		searchInfo.setQuery(query);
 		searchInfo.setFilter_type(filter_type);

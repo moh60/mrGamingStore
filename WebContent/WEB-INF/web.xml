@@ -5,6 +5,7 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>/</welcome-file>
     <welcome-file>login.jsp</welcome-file>
+    <welcome-file>passwordChange.jsp</welcome-file>
   </welcome-file-list>
  
   <servlet>
@@ -71,5 +72,16 @@
   <servlet-mapping>
     <servlet-name>DiscountsServlet</servlet-name>
     <url-pattern>/DiscountsServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>passwordChangeServlet</display-name>
+    <servlet-name>passwordChangeServlet</servlet-name>
+    <servlet-class>controller.passwordChangeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>passwordChangeServlet</servlet-name>
+    <url-pattern>/passwordChangeServlet</url-pattern>
   </servlet-mapping>
 </web-app>

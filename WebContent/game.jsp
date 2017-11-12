@@ -31,6 +31,7 @@
 	  				<span class="game-sub-info">Players: <%out.print(gameInfo.getGameNumOfPlayers()); %></span><br/>
 	  			    <span class="game-sub-info">Coop: <%out.print(gameInfo.getGameCoop()); %></span><br/>
 	  			    <span class="game-sub-info">Release Date: <%out.print(gameInfo.getGameReleaseDate()); %></span><br/>
+	  			    <span class="game-sub-info">Genre: <%out.print(gameInfo.getGameGenre()); %></span><br/>
 	  			    <span class="game-sub-info">Developer: <%out.print(gameInfo.getGameDeveloper()); %></span>
 	  			    <div class="logo"><img src="<%=gameInfo.getGameDeveloperLogo()%>" class="logo" height="78" width="auto" alt="developerLogo"></div><br/>		       			    	  			  
 	  			    <span class="game-sub-info">Publisher: <%out.print(gameInfo.getGamePublisher()); %></span>
