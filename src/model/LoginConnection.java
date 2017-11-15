@@ -12,7 +12,7 @@ import controller.LoginInfo;
 import db.DBConnection;
 // this class handles the logic for login
 public class LoginConnection {
-	
+	// authenticate user login
 	public String authenticateUser(LoginInfo loginInfo) {
 		// store users login info in variables
 		String userEmail = loginInfo.getUserEmail();
@@ -102,6 +102,7 @@ public class LoginConnection {
 	
 	// lock user implementation
 	public String lockUser(LoginInfo loginInfo) {
+
 		// store users login info in variables
 		String userEmail = loginInfo.getUserEmail();
 		// intialize connection
@@ -148,4 +149,28 @@ public class LoginConnection {
 		}				
 		return null;
 	}
+	
+	// load user info
+	public ResultSet getUser(LoginInfo loginInfo) {
+		// store users login info in variables
+		String userID = loginInfo.getUserID();
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		//connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();			
+			//fetch sql query result and store it in a resultSet
+			PreparedStatement query = con.prepareStatement("SELECT * from users where user_id = ?");
+			query.setString(1, userID); 
+		    resultSet = query.executeQuery();
+		return resultSet;		
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;	
+	}	
 }

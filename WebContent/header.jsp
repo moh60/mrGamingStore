@@ -48,7 +48,8 @@
 			 						"<a href='DiscountsServlet'>Discounts</a></br>" +
 		 							"<a href=FavouriteServlet?user_id=" 
 			 						+ request.getSession().getAttribute("user_id") + ">Favourites</a></br>" +
-		 							"<a href='UpdateProfileServlet'>Update Profile</a></div>"); 
+			 						"<a href=LoadProfileServlet?user_id=" 
+			 						+ request.getSession().getAttribute("user_id") + ">Update Profile</a></div>"); 
 						} 
 						else {
 							out.print("<a class='btn btn-primary btn-lg login-button' href='login.jsp' role='button'> Log in</a>");

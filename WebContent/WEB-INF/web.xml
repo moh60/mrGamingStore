@@ -106,4 +106,15 @@
     <servlet-name>FavouriteServlet</servlet-name>
     <url-pattern>/FavouriteServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>LoadProfileServlet</display-name>
+    <servlet-name>LoadProfileServlet</servlet-name>
+    <servlet-class>controller.LoadProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadProfileServlet</servlet-name>
+    <url-pattern>/LoadProfileServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
