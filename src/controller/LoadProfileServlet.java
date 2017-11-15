@@ -33,10 +33,10 @@ public class LoadProfileServlet extends HttpServlet {
 				while(userObject.next()) {
 					SignUpInfo signUpInfo = new SignUpInfo(); 
 					signUpInfo.setUser_id(userObject.getString(1));
-					signUpInfo.setUserFirstName(userObject.getString(2));
-					signUpInfo.setUserLastName(userObject.getString(3));
-					signUpInfo.setUserEmail(userObject.getString(4));
-					signUpInfo.setUserPassword(userObject.getString(5));
+					signUpInfo.setUserPassword(userObject.getString(2));
+					signUpInfo.setUserFirstName(userObject.getString(3)); 
+					signUpInfo.setUserLastName(userObject.getString(4));
+					signUpInfo.setUserEmail(userObject.getString(5));
 					signUpInfo.setUserAdress1(userObject.getString(6));
 					signUpInfo.setUserAddress2(userObject.getString(7));
 					signUpInfo.setUserCity(userObject.getString(8));

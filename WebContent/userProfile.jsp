@@ -16,36 +16,33 @@
 <div class="main">
 	<div class="user-wrapper">
 	   <% for(int i=0; i<userList.size(); i++){%>
-	   <div class="user-head">
 	   		<% SignUpInfo signUpInfo = (SignUpInfo)userList.get(i); %>
 				<form name="form" action="updateProfileServlet" method="post" onsubmit="return validate()">
-					<input type="text" name="user_id" value="<%= signUpInfo.getUser_id()%>>" size="25" class="user-info"  />
-					<input type="text" name="firstname" value="<%= signUpInfo.getUserFirstName()%>" size="25" maxlength="20" placeholder="First name" class="user-info"  />
-					<input type="text" name="lastname" value="<%= signUpInfo.getUserLastName()%>" size="25" maxlength="20" placeholder="Last name" class="user-info"  />
-					<br/><input type="text" name="email" value="<%= signUpInfo.getUserEmail()%>" size="25" maxlength="20" placeholder="Email" class="user-info" />
-					<input type="password" name="password" value="<%= signUpInfo.getUserPassword()%>" size="25" maxlength="20" placeholder="Password" class="user-info"  />
-					<input type="text" name="address1" value="<%= signUpInfo.getUserAdress1()%>" size="25" maxlength="20" placeholder="Address 1" class="user-addr"  />
-				    <input type="textarea" name="address2" value="<%= signUpInfo.getUserAddress2()%>" size="25" maxlength="20" placeholder="Address 2" class="user-addr" />
-					<br/><input type="text" name="city" value="<%= signUpInfo.getUserCity()%>" size="25" maxlength="20" placeholder="City" class="user-addr" />
-					<input type="text" name="state" value="<%= signUpInfo.getUserState()%>" size="25" maxlength="20" placeholder="State" class="user-addr" />			
-					<br/><input type="text" name="zip" value="<%= signUpInfo.getZip()%>" size="25" maxlength="20" placeholder="Zip" class="user-addr"  />			
-					<input type="text" name="country" value="<%= signUpInfo.getUserCountry()%>"size="25" maxlength="20" placeholder="Country" class="user-addr"  />
+					<input type="hidden" name="user_id" value="<%= signUpInfo.getUser_id()%>>" size="25" class="user-info"  />
+					<input type="text" name="firstname" value="<%= signUpInfo.getUserFirstName()%>" size="25" maxlength="20" placeholder="First name" class="user-info"  /><br/>
+					<input type="text" name="lastname" value="<%= signUpInfo.getUserLastName()%>" size="25" maxlength="20" placeholder="Last name" class="user-info"  /><br/>
+					<input type="text" name="email" value="<%= signUpInfo.getUserEmail()%>" size="25" maxlength="20" placeholder="Email" class="user-info" /><br/>
+					<input type="password" name="password" value="<%= signUpInfo.getUserPassword()%>" size="25" maxlength="20" placeholder="Password" class="user-info"  /><br/>
+					<input type="text" name="address1" value="<%= signUpInfo.getUserAdress1()%>" size="25" maxlength="20" placeholder="Address 1" class="user-addr"  /><br/>
+				    <input type="text" name="address2" value="<%= signUpInfo.getUserAddress2()%>" size="25" maxlength="20" placeholder="Address 2" class="user-addr" /><br/>
+					<input type="text" name="city" value="<%= signUpInfo.getUserCity()%>" size="25" maxlength="20" placeholder="City" class="user-addr" /><br/>
+					<input type="text" name="state" value="<%= signUpInfo.getUserState()%>" size="25" maxlength="20" placeholder="State" class="user-addr" /><br/>	
+					<input type="text" name="zip" value="<%= signUpInfo.getZip()%>" size="25" maxlength="20" placeholder="Zip" class="user-addr"  /><br/>
+					<input type="text" name="country" value="<%= signUpInfo.getUserCountry()%>"size="25" maxlength="20" placeholder="Country" class="user-addr"  /><br/>
 					<select name="credit_card_type" class="credit-type" id="credit-input">
    						<option value="<%= signUpInfo.getUserCCtype()%>" disabled selected><%= signUpInfo.getUserCCtype()%></option>
-   						<%System.out.println(signUpInfo.getUserCCtype()); %>
 				        <option value="master">master</option>
 				        <option value="visa">visa</option>
 				     </select><br/>
-				    <input class="inputCard" type="text" value="<%= signUpInfo.getUserCCnumber()%>"placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" id="credit-input" /><br/>										
+				    <input class="inputCard" type="text" value="<%= signUpInfo.getUserCCnumber()%>"placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" size="25" id="credit-input" /><br/>										
 					<input type="text" value="<%= signUpInfo.getUserCCcvv()%>" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" id="credit-input" />						
-					<input class="inputCard" type="text" value="<%= signUpInfo.getUserCCexpiry()%>" size="10" id="credit-input"/>
+					<input class="inputCard" type="text" value="<%= signUpInfo.getUserCCexpiry()%>" size="16" id="credit-input"/><br/>
 					
 					<!-- submit sign up form -->
 					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" />						
 				</form>
-		</div>
 	</div>
 </div>		
-	   <%}%>
+<%}%>
 </body>
 </html>
