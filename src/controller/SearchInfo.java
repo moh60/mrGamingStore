@@ -19,6 +19,7 @@ public class SearchInfo {
 	private String gameDeveloperLogo;
 	private String gamePrice;
 	private String gameDiscount;
+	private String gameQuantity;
 
 	public String getGameID() {
 		return gameID;
@@ -162,5 +163,13 @@ public class SearchInfo {
 
 	public void setGameDiscount(String gameDiscount) {
 		this.gameDiscount = gameDiscount;
+	}
+
+	public String getGameQuantity() {
+		return gameQuantity;
+	}
+
+	public void setGameQuantity(String gameQuantity) {
+		this.gameQuantity = gameQuantity;
 	}
 }

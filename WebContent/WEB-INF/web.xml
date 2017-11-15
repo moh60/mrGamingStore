@@ -128,4 +128,15 @@
     <servlet-name>updateProfileServlet</servlet-name>
     <url-pattern>/updateProfileServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>InventoryPageServlet</display-name>
+    <servlet-name>InventoryPageServlet</servlet-name>
+    <servlet-class>controller.InventoryPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InventoryPageServlet</servlet-name>
+    <url-pattern>/InventoryPageServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
