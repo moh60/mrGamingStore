@@ -16,6 +16,7 @@ public class LoginConnection {
 	public String authenticateUser(LoginInfo loginInfo) {
 		// store users login info in variables
 		String userEmail = loginInfo.getUserEmail();
+		System.out.println("1 " + userEmail);
 		String password = loginInfo.getPassword();
 		// intialize connection
 		Connection con = null;
@@ -33,7 +34,9 @@ public class LoginConnection {
 			// use to write sql queries
 			statement = con.createStatement();	
 			//fetch sql query result and store it in a resultSet
-			resultSet = statement.executeQuery("select user_id,email,password,isLocked,forgot_pass,role from Users");
+			PreparedStatement query = con.prepareStatement("SELECT * from users where email = ?");
+			query.setString(1, userEmail); 
+		    resultSet = query.executeQuery();
 			while(resultSet.next()) {				
 				// if user has forgot_pass
 				if (resultSet.getBoolean("forgot_pass")) {
@@ -76,9 +79,11 @@ public class LoginConnection {
 				else if (!resultSet.getBoolean("isLocked")) {
 					//fetch the values present in database
 					userEmailDB = resultSet.getString("email"); 
+					System.out.println(resultSet.getString("user_id"));
 					passwordDB = resultSet.getString("password");
 					userID = resultSet.getString("user_id");
 					String userRole = resultSet.getString("Role");
+					System.out.println(userEmailDB + " " + passwordDB);
 					if(userEmail.equals(userEmailDB) && password.equals(passwordDB)) {
 						// update user last login
 						String userLastLogin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());;
