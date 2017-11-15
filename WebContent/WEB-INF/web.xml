@@ -139,4 +139,15 @@
     <servlet-name>InventoryPageServlet</servlet-name>
     <url-pattern>/InventoryPageServlet</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>UserTrackerServlet</display-name>
+    <servlet-name>UserTrackerServlet</servlet-name>
+    <servlet-class>controller.UserTrackerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserTrackerServlet</servlet-name>
+    <url-pattern>/UserTrackerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

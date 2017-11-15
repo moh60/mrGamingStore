@@ -32,6 +32,8 @@ public class updateProfileServlet extends HttpServlet {
 		String userCCnumber = request.getParameter("credit_card_number");
 		String userCCcvv = request.getParameter("credit_card_cvv");
 		String userCCexpiry = request.getParameter("credit_card_expiry");
+		String userisLocked = request.getParameter("isLocked");
+		
 		// object which contains user's updadted information
 		SignUpInfo signUpInfo = new SignUpInfo(); 
 		//setting user's sign up info to store in DB
@@ -50,6 +52,8 @@ public class updateProfileServlet extends HttpServlet {
 		signUpInfo.setUserCCnumber(userCCnumber);
 		signUpInfo.setUserCCcvv(userCCcvv);
 		signUpInfo.setUserCCexpiry(userCCexpiry);
+		signUpInfo.setIsLocked(userisLocked);
+		
 		SignUpConnection signUpConnection= new SignUpConnection(); 
 		String updateUser = signUpConnection.updateUser(signUpInfo);
 		if(updateUser.equals("SUCCESS")) {

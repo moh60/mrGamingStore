@@ -1,6 +1,7 @@
 package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controller.SignUpInfo;
@@ -61,7 +62,7 @@ public class SignUpConnection {
 					// establish a connection with the db
 					con = DBConnection.createConnection();
 					ps = con.prepareStatement(
-					"UPDATE users SET password = ?, firstname = ?,lastname = ?, email = ?, address1 = ?, address2 = ?, city = ?, state = ?, zip = ?, country = ?, credit_card_type = ?, credit_card_number = ?, credit_card_cvv = ?, credit_card_expiry = ? WHERE users.user_id = ?");  
+					"UPDATE users SET password = ?, firstname = ?,lastname = ?, email = ?, address1 = ?, address2 = ?, city = ?, state = ?, zip = ?, country = ?, credit_card_type = ?, credit_card_number = ?, credit_card_cvv = ?, credit_card_expiry = ?, isLocked = ? WHERE users.user_id = ?");  
 					ps.setString(1, signUpInfo.getUserPassword());  
 					ps.setString(2, signUpInfo.getUserFirstName());  
 					ps.setString(3, signUpInfo.getUserLastName());
@@ -76,7 +77,8 @@ public class SignUpConnection {
 					ps.setString(12, signUpInfo.getUserCCnumber());  
 					ps.setString(13, signUpInfo.getUserCCcvv());  
 					ps.setString(14, signUpInfo.getUserCCexpiry());
-					ps.setString(15, signUpInfo.getUser_id());  
+					ps.setString(15, signUpInfo.getIsLocked());
+					ps.setString(16, signUpInfo.getUser_id());  
 					ps.executeUpdate();						
 					System.out.println("User profile updated successfully");
 					return "SUCCESS"; 
@@ -86,5 +88,27 @@ public class SignUpConnection {
 				}
 				// no match found
 				return "Invalid user credentials"; 
+	}
+
+	public ResultSet getAllUsers() {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			//fetch  userObject for last login page and store it in a resultSet
+		    PreparedStatement query = con.prepareStatement("SELECT * from users");
+			resultSet = query.executeQuery();
+		    // found games
+			return resultSet; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no match found
+		return null; 
 	}	
 }

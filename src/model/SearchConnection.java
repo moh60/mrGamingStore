@@ -86,23 +86,23 @@ public class SearchConnection {
 
 	public ResultSet getAllGames() {
 		// intialize connection
-				Connection con = null;
-				// intialize sql
-				ResultSet resultSet = null;		
-				// connect to DB
-				try {
-					// establish a connection with the db
-					con = DBConnection.createConnection();
-					//fetch  gameObject for inventory page and store it in a resultSet
-				    PreparedStatement query = con.prepareStatement("SELECT * from game");
-					resultSet = query.executeQuery();
-				    // found games
-					return resultSet; 	
-				}
-				catch(SQLException e) {
-					e.printStackTrace();
-				}
-				// no match found
-				return null; 
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			//fetch  gameObject for inventory page and store it in a resultSet
+		    PreparedStatement query = con.prepareStatement("SELECT * from game");
+			resultSet = query.executeQuery();
+		    // found games
+			return resultSet; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no match found
+		return null; 
 	}
 }

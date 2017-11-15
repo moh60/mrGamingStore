@@ -17,6 +17,7 @@ public class SignUpInfo {
 	private String userCCcvv;
 	private String userCCexpiry;
 	private String userLastLogin;
+	private String isLocked;
 	
 	public String getUserFirstName() {
 		return userFirstName;
@@ -113,6 +114,12 @@ public class SignUpInfo {
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	public String getIsLocked() {
+		return isLocked;
+	}
+	public void setIsLocked(String isLocked) {
+		this.isLocked = isLocked;
 	}
 	
 }

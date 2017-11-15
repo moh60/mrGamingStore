@@ -33,6 +33,9 @@
 					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCnumber()%>"placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" size="25" id="credit-input" /><br/>										
 					<input type="text" value="<%= signUpInfo.getUserCCcvv()%>" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" id="credit-input" />						
 					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCexpiry()%>" name="credit_card_expiry" size="16" id="credit-input"/><br/>
+					<%if(request.getSession().getAttribute("Role").equals("admin"))
+						out.print("<input class='user-info' type='text' placeholder='Account Lock = 1 / Unlock = 0' value='" + signUpInfo.getIsLocked() + "' name='isLocked' size='25' id='isLocked-input'/><br/>");
+					 %>
 					<!-- submit sign up form -->
 					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" />						
 				</form>

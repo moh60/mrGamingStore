@@ -43,8 +43,7 @@
 								out.print("<div id='admin-menu' class='collapse'>" +
 											"<a href='InventoryPageServlet'>Inventory</a></br>" +
 				 							"<a href='AddGameServlet'>Add Game</a></br>" +
-				 							"<a href='UserTrackerServlet'>Users Tracker</a></br>" +
-				 							"<a href='UserLockServlet'>User Account Lock</a></div>"); 
+				 							"<a href='UserTrackerServlet'>Users Tracker</a></div>"); 
 							}
 						} 
 						else {

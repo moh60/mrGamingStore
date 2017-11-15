@@ -47,6 +47,7 @@ public class LoadProfileServlet extends HttpServlet {
 					signUpInfo.setUserCCnumber(userObject.getString(13));
 					signUpInfo.setUserCCcvv(userObject.getString(14));
 					signUpInfo.setUserCCexpiry(userObject.getString(15));
+					signUpInfo.setIsLocked(userObject.getString(18));
 					user.add(signUpInfo);
 				}
 			} catch (SQLException e) {
