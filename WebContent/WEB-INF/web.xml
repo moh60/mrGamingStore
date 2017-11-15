@@ -117,4 +117,15 @@
     <servlet-name>LoadProfileServlet</servlet-name>
     <url-pattern>/LoadProfileServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>updateProfileServlet</display-name>
+    <servlet-name>updateProfileServlet</servlet-name>
+    <servlet-class>controller.updateProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateProfileServlet</servlet-name>
+    <url-pattern>/updateProfileServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

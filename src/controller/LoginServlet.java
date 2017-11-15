@@ -30,6 +30,11 @@ public class LoginServlet extends HttpServlet {
 		if(userValidate.contains("SUCCESS")) {
 			String userINFO[] = userValidate.split(":");
 			String userID = userINFO[1];
+			String userRole = "";
+			if (userINFO.length > 2) {
+				userRole = userINFO[2];	
+			}
+			System.out.println(userRole);
 			System.out.println("logged in");
 			//with setAttribute() you can define a "key" and value pair so that you can get it in future using getAttribute("key")
 			request.setAttribute("userEmail", userEmail); 
@@ -38,6 +43,7 @@ public class LoginServlet extends HttpServlet {
 			//set a string session attribute
 			session.setAttribute("userEmail", userEmail);
 			session.setAttribute("user_id", userID);
+			session.setAttribute("Role", userRole);
 			//RequestDispatcher is used to send the control to the invoked page.
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			

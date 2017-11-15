@@ -33,7 +33,7 @@ public class LoginConnection {
 			// use to write sql queries
 			statement = con.createStatement();	
 			//fetch sql query result and store it in a resultSet
-			resultSet = statement.executeQuery("select user_id,email,password,isLocked,forgot_pass from Users");
+			resultSet = statement.executeQuery("select user_id,email,password,isLocked,forgot_pass,role from Users");
 			while(resultSet.next()) {				
 				// if user has forgot_pass
 				if (resultSet.getBoolean("forgot_pass")) {
@@ -43,6 +43,7 @@ public class LoginConnection {
 					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 					Date currentDate = new Date();
 					userID = resultSet.getString("user_id");
+					String userRole = resultSet.getString("Role");
 					PreparedStatement ps = con.prepareStatement("select * from temporarylogin where user_id = ?");  
 					ps.setString(1, userID);  
 					ResultSet rs = ps.executeQuery();
@@ -67,7 +68,7 @@ public class LoginConnection {
 						ps.setString(5,userID);
 						ps.executeUpdate();						
 						System.out.println("User logged in with temporary password");
-						return "SUCCESS:" + userID; 
+						return "SUCCESS:" + userID + ":" + userRole; 
 					}	 
 				}
 				
@@ -77,6 +78,7 @@ public class LoginConnection {
 					userEmailDB = resultSet.getString("email"); 
 					passwordDB = resultSet.getString("password");
 					userID = resultSet.getString("user_id");
+					String userRole = resultSet.getString("Role");
 					if(userEmail.equals(userEmailDB) && password.equals(passwordDB)) {
 						// update user last login
 						String userLastLogin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());;
@@ -85,7 +87,7 @@ public class LoginConnection {
 						ps.setString(2,userID);
 						ps.executeUpdate();			
 						// return "SUCCESS" if userEmail and userPassword are a match
-						return "SUCCESS:" + userID; 
+						return "SUCCESS:" + userID + ":" + userRole; 
 					}	
 				}
 				else {

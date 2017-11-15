@@ -18,7 +18,6 @@ public class AddToFavouriteServlet extends HttpServlet {
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// GET user_id
 		String userID = request.getParameter("user_id");
-		System.out.println(userID);
 		// GET game_id
 		String gameID = request.getParameter("game_id");
 		// set game object with gameID

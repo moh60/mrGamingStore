@@ -97,3 +97,6 @@ li.active a, li.active a:hover {
     border: none;
     padding: 10px;
 }
+.user-wrapper {
+	text-align: center;
+}
