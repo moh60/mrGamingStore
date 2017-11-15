@@ -18,6 +18,8 @@
 	   <% for(int i=0; i<gamesList.size(); i++){%>
 	   <div class="game-head">
 	<% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
+		<button class="game-favourite"><a href="AddToFavouriteServlet?game_id=<%=gameInfo.getGameID()%>&user_id=
+		<%= request.getSession().getAttribute("user_id")%>" class="game-favourite-link">Add to favourites</a></button>
 	   	<div class="game-title"><%out.print(gameInfo.getGameName().toUpperCase()); %></div>
 	    	<div class="game-cover-wrapper">
 	    			<div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="box-art" height="424" width="300" alt="gameFrontCover"></div>		    

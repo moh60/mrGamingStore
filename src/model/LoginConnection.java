@@ -67,7 +67,7 @@ public class LoginConnection {
 						ps.setString(5,userID);
 						ps.executeUpdate();						
 						System.out.println("User logged in with temporary password");
-						return "SUCCESS"; 
+						return "SUCCESS:" + userID; 
 					}	 
 				}
 				
@@ -85,7 +85,7 @@ public class LoginConnection {
 						ps.setString(2,userID);
 						ps.executeUpdate();			
 						// return "SUCCESS" if userEmail and userPassword are a match
-						return "SUCCESS"; 
+						return "SUCCESS:" + userID; 
 					}	
 				}
 				else {

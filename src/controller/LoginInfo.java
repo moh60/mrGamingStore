@@ -2,6 +2,7 @@ package controller;
 
 // stores user login information
 public class LoginInfo {
+	private String userID;
 	private String userEmail;
 	private String password;
 	
@@ -16,5 +17,11 @@ public class LoginInfo {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 }

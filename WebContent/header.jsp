@@ -26,21 +26,35 @@
 				<p class="nav_tagline">An open, online video games store</p>		
 			</div>
 		<div id="navbar-collapse">
+			<!-- Admin menu -->			
+				<button type="button" class="btn btn-primary btn-lg" role="button" data-toggle="collapse" data-target="#admin-menu">ADMIN</button>
+					<%
+						if(request.getSession().getAttribute("userEmail") != null){
+						    out.print("<div id='admin-menu' class='collapse'>" +
+					    		"<a href='InventoryPageServlet'>Inventory</a></br>" +
+	 							"<a href='AddGameServlet'>Add Game</a></br>" +
+	 							"<a href='UserTrackerServlet'>Users Tracker</a></br>" +
+	 							"<a href='UserLockServlet'>User Account Lock</a></div>"); 
+						}
+					%>
+		
 			<!-- menu -->			
 				<button type="button" class="btn btn-primary btn-lg advance-search" role="button" data-toggle="collapse" data-target="#menu-search">MENU</button>
-		 	<%
-				//out.print(request.getSession().getAttribute("userEmail"));
-				if(request.getSession().getAttribute("userEmail") != null){  
-				    out.print("<a class='btn btn-primary btn-lg signup-button' href='LogoutServlet' role='button'>Logout</a>");
-	 				out.print("<div id='menu-search' class='collapse'>" +
-	 							"<a href='DiscountsServlet'>Discounts</a></div>"); 
-				} 
-				else {
-					out.print("<a class='btn btn-primary btn-lg login-button' href='login.jsp' role='button'> Log in</a>");
-				 	out.print("<a class='btn btn-primary btn-lg signup-button' href='signup.jsp' role='button'> Sign Up</a>");
-				}		 
-			%>			
-			
+				 	<%
+						//out.print(request.getSession().getAttribute("userEmail"));
+						if(request.getSession().getAttribute("userEmail") != null){  
+						    out.print("<a class='btn btn-primary btn-lg signup-button' href='LogoutServlet' role='button'>Logout</a>");
+						    out.print("<div id='menu-search' class='collapse'>" +
+			 						"<a href='DiscountsServlet'>Discounts</a></br>" +
+		 							"<a href='FavouriteServlet'>Favourites</a></br>" +
+		 							"<a href='UpdateProfileServlet'>Update Profile</a></div>"); 
+			 				
+						} 
+						else {
+							out.print("<a class='btn btn-primary btn-lg login-button' href='login.jsp' role='button'> Log in</a>");
+						 	out.print("<a class='btn btn-primary btn-lg signup-button' href='signup.jsp' role='button'> Sign Up</a>");
+						}		
+					%>					
 		</div>
 		</div>		
 	</nav>	

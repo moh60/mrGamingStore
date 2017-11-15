@@ -84,4 +84,15 @@
     <servlet-name>passwordChangeServlet</servlet-name>
     <url-pattern>/passwordChangeServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>AddToFavouriteServlet</display-name>
+    <servlet-name>AddToFavouriteServlet</servlet-name>
+    <servlet-class>controller.AddToFavouriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddToFavouriteServlet</servlet-name>
+    <url-pattern>/AddToFavouriteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

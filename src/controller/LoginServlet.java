@@ -27,7 +27,9 @@ public class LoginServlet extends HttpServlet {
 		//Calling authenticateUser function
 		String userValidate = loginConnection.authenticateUser(loginInfo); 
 		//If function returns success string then user will be rooted to Home page
-		if(userValidate.equals("SUCCESS")) {
+		if(userValidate.contains("SUCCESS")) {
+			String userINFO[] = userValidate.split(":");
+			String userID = userINFO[1];
 			System.out.println("logged in");
 			//with setAttribute() you can define a "key" and value pair so that you can get it in future using getAttribute("key")
 			request.setAttribute("userEmail", userEmail); 
@@ -35,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			//set a string session attribute
 			session.setAttribute("userEmail", userEmail);
+			session.setAttribute("user_id", userID);
 			//RequestDispatcher is used to send the control to the invoked page.
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			
