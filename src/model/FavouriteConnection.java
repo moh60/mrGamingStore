@@ -41,5 +41,55 @@ public class FavouriteConnection {
 		}
 		// ERROR
 		return null; 
-	}	
+	}
+
+	public ResultSet FavouriteGameCollection(LoginInfo userInfo) {
+		// get user id
+		String userID = userInfo.getUserID();
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			//fetch  gameObject by game_id by sql query and store it in a resultSet
+		    PreparedStatement query = con.prepareStatement("SELECT game_id from favourite where user_id = ?");
+		    query.setString(1, userID);
+			resultSet = query.executeQuery();
+		    // found favourite games
+//			while(resultSet.next()) {
+//				System.out.println(resultSet.getString("game_id"));
+//			}
+			return resultSet; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no favourite game found
+		return null; 
+	}
+
+	public ResultSet retriveFavouriteGames() {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			//fetch  gameObject by game_id by sql query and store it in a resultSet
+		    PreparedStatement query = con.prepareStatement("SELECT * from game where discount > 0");
+			resultSet = query.executeQuery();
+		    // found games
+			return resultSet; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no match found
+		return null; 
+	}
 }

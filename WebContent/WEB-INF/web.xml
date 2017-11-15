@@ -95,4 +95,15 @@
     <servlet-name>AddToFavouriteServlet</servlet-name>
     <url-pattern>/AddToFavouriteServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>FavouriteServlet</display-name>
+    <servlet-name>FavouriteServlet</servlet-name>
+    <servlet-class>controller.FavouriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FavouriteServlet</servlet-name>
+    <url-pattern>/FavouriteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
