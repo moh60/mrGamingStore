@@ -17,8 +17,8 @@
 	<div class="user-wrapper">
 	   <% for(int i=0; i<gameList.size(); i++){%>
 	   		<% SearchInfo gameInfo = (SearchInfo)gameList.get(i); %>
-				<form name="form" action="updateGameServlet" method="post">
-					<input type="text" name="game_id" value="<%= gameInfo.getGameID()%>" size="25" maxlength="20" placeholder="Game ID" class="user-info"  /><br/>
+				<form name="form" action="UpdateGameServlet" method="post">
+					<input type="hidden" name="game_id" value="<%= gameInfo.getGameID()%>" size="25" maxlength="20" placeholder="Game ID" class="user-info"  /><br/>
 					<input type="text" name="game_name" value="<%= gameInfo.getGameName()%>" size="25" maxlength="20" placeholder="Game Name" class="user-info"  /><br/>
 					<input type="text" name="game_description" value="<%= gameInfo.getGameDescription()%>" size="25" maxlength="20" placeholder="Game Description" class="user-info"  /><br/>
 					<input type="text" name="console" value="<%= gameInfo.getGameConsole()%>" size="25" maxlength="20" placeholder="Console" class="user-info" /><br/>

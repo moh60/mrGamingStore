@@ -119,4 +119,42 @@ public class GameConnection {
 		}
 		return null;
 	}
+
+	public String updateGame(SearchInfo gameInfo) {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		PreparedStatement ps = null;
+		//connect to DB
+		try {
+		// establish a connection with the db
+		con = DBConnection.createConnection();
+		ps = con.prepareStatement(
+		"UPDATE game SET game_name = ?, game_description= ?, console = ?, num_players = ?, coop = ?, genre = ?, release_date = ?, developer = ?, publisher = ?, front_box_art = ?, back_box_art = ?, logo = ?, developer_logo = ?, price = ?, discount = ?, quantity = ?  WHERE game.game_id = ?");  
+		ps.setString(1, gameInfo.getGameName());  
+		ps.setString(2, gameInfo.getGameDescription());  
+		ps.setString(3, gameInfo.getGameConsole());
+		ps.setString(4, gameInfo.getGameNumOfPlayers());  
+		ps.setString(5, gameInfo.getGameCoop());  
+		ps.setString(6, gameInfo.getGameGenre());  
+		ps.setString(7, gameInfo.getGameReleaseDate());  
+		ps.setString(8, gameInfo.getGameDeveloper());  
+		ps.setString(9, gameInfo.getGamePublisher());  
+		ps.setString(10, gameInfo.getGameFrontBoxArt());
+		ps.setString(11, gameInfo.getGameBackBoxArt());  
+		ps.setString(12, gameInfo.getGameLogo());  
+		ps.setString(13, gameInfo.getGameDeveloperLogo());  
+		ps.setString(14, gameInfo.getGamePrice());  
+		ps.setString(15, gameInfo.getGameDiscount());  
+		ps.setString(16, gameInfo.getGameQuantity());
+		ps.setString(17, gameInfo.getGameID());  		
+		ps.executeUpdate();  
+		return "SUCCESS"; 		
+	}
+	catch(SQLException e) {
+		e.printStackTrace();
+	}
+	// no match found
+	return "Invalid user credentials"; 
+	}
 }

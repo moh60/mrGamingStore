@@ -173,4 +173,15 @@
     <servlet-name>loadGameServlet</servlet-name>
     <url-pattern>/loadGameServlet</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>UpdateGameServlet</display-name>
+    <servlet-name>UpdateGameServlet</servlet-name>
+    <servlet-class>controller.UpdateGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateGameServlet</servlet-name>
+    <url-pattern>/UpdateGameServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
