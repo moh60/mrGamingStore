@@ -6,6 +6,7 @@
     <welcome-file>/</welcome-file>
     <welcome-file>login.jsp</welcome-file>
     <welcome-file>passwordChange.jsp</welcome-file>
+    <welcome-file>addGame.jsp</welcome-file>
   </welcome-file-list>
  
   <servlet>
@@ -149,5 +150,27 @@
   <servlet-mapping>
     <servlet-name>UserTrackerServlet</servlet-name>
     <url-pattern>/UserTrackerServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>AddGameServlet</display-name>
+    <servlet-name>AddGameServlet</servlet-name>
+    <servlet-class>controller.AddGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddGameServlet</servlet-name>
+    <url-pattern>/AddGameServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>loadGameServlet</display-name>
+    <servlet-name>loadGameServlet</servlet-name>
+    <servlet-class>controller.loadGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loadGameServlet</servlet-name>
+    <url-pattern>/loadGameServlet</url-pattern>
   </servlet-mapping>
 </web-app>

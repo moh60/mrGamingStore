@@ -42,7 +42,7 @@
 						    if (request.getSession().getAttribute("Role").equals("admin")){
 								out.print("<div id='admin-menu' class='collapse'>" +
 											"<a href='InventoryPageServlet'>Inventory</a></br>" +
-				 							"<a href='AddGameServlet'>Add Game</a></br>" +
+				 							"<a href='addGame.jsp'>Add Game</a></br>" +
 				 							"<a href='UserTrackerServlet'>Users Tracker</a></div>"); 
 							}
 						} 
