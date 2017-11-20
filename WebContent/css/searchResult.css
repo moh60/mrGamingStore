@@ -13,6 +13,7 @@
     box-shadow: 1px 1px 2px 2px darkslateblue;
     margin-bottom: 20px;
     overflow: hidden;
+    display: inline-block;
 }
 .game-cover {
 	text-align: center;
@@ -22,6 +23,11 @@
 .game-title {
 	margin-top: 10px;
     margin: 0px;
+    padding-right: 10px
+}
+.game-quantity {
+    border-left: 2px solid darkslateblue;
+    padding-left: 10px;
 }
 .game-title-link {
 	color: black;

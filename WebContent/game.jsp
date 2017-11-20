@@ -18,9 +18,12 @@
 	   <% for(int i=0; i<gamesList.size(); i++){%>
 	   <div class="game-head">
 	<% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
-		<button class="game-favourite"><a href="AddToFavouriteServlet?game_id=<%=gameInfo.getGameID()%>&user_id=
-		<%= request.getSession().getAttribute("user_id")%>" class="game-favourite-link">Add to favourites</a></button>
-		
+		<% if(request.getSession().getAttribute("userEmail") != null){  
+			out.print("<button class='game-favourite'><a href='AddToFavouriteServlet?game_id=" + gameInfo.getGameID() +
+					"&user_id=" + request.getSession().getAttribute("user_id") + 
+					"'class='game-favourite-link'>Add to favourites</a></button>");		
+			}
+		%>
 		<% 
 		// edit game button
 		try{

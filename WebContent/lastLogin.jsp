@@ -18,7 +18,8 @@
     <% for(int i=0; i<userList.size(); i++){%>
 	    <tr class="user-result">
 		    <% SignUpInfo userInfo = (SignUpInfo)userList.get(i); %>
-			<td class="user-email"><a href="LoadProfileServlet?user_id=<%out.print(userInfo.getUser_id());%>" class="user-email"><%out.print(userInfo.getUserEmail()); %></a></td>
+			<td class="user-email"><a href="LoadProfileServlet?user_id=<%out.print(userInfo.getUser_id());%>"><%out.print(userInfo.getUserEmail()); %></a></td>
+			<td class="user-purchase"><a href="PurchaseServlet?user_id=<%out.print(userInfo.getUser_id());%>">Purchase History</a></td>
 			<td class="user-last-login"><%out.print(userInfo.getUserLastLogin()); %></td>
 	      </tr> 
       <%}%>
