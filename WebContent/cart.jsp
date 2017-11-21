@@ -18,7 +18,13 @@
 	    <div class="game-result">
 		    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
 		    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    
+
+			<span class="game-release"><%out.print(gameInfo.getGameQuantity()); %></span>
+
+			<span class="game-release"><%out.print(gameInfo.getGamePrice()); %></span>
+
 			<span class="game-release"><%out.print(gameInfo.getGameReleaseDate().substring(0, gameInfo.getGameReleaseDate().indexOf("-"))); %></span>
+
 			<%out.print("<button class='remove-favourite'><a href='RemoveCartServlet?game_id=" + gameInfo.getGameID() +
 					"&user_id=" + request.getSession().getAttribute("user_id") + 
 					"'class='game-favourite-link'>Remove</a></button>"); %>			

@@ -76,7 +76,7 @@ public class CartConnection {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
 			//fetch  gameObject by game_id by sql query and store it in a resultSet
-		    PreparedStatement query = con.prepareStatement("SELECT game_id from cart where user_id = ? and processed = ?");
+		    PreparedStatement query = con.prepareStatement("SELECT * from cart where user_id = ? and processed = ?");
 		    query.setString(1, userID);
 		    query.setBoolean(2, false);
 			resultSet = query.executeQuery();

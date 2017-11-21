@@ -49,6 +49,7 @@ public class CartServlet extends HttpServlet {
 								gameInfo.setGameFrontBoxArt(gameObject.getString(11));
 								gameInfo.setGamePrice(gameObject.getString(15));
 								gameInfo.setGameDiscount(gameObject.getString(16));
+								gameInfo.setGameQuantity(cartGameCollection.getString("quantity"));
 								cartGames.add(gameInfo);
 							}
 						}
