@@ -184,4 +184,37 @@
     <servlet-name>UpdateGameServlet</servlet-name>
     <url-pattern>/UpdateGameServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>AddToCartServlet</display-name>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <servlet-class>controller.AddToCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <url-pattern>/AddToCartServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>CartServlet</display-name>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>controller.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>RemoveCartServlet</display-name>
+    <servlet-name>RemoveCartServlet</servlet-name>
+    <servlet-class>controller.RemoveCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveCartServlet</servlet-name>
+    <url-pattern>/RemoveCartServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

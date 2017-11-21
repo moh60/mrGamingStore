@@ -1,18 +1,17 @@
 package model;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import controller.LoginInfo;
 import controller.SearchInfo;
 import db.DBConnection;
 
-public class FavouriteConnection {
-	public String addToFavouriteGame(LoginInfo userInfo, SearchInfo searchInfo) {
+public class CartConnection {
+
+	public String addToCart(LoginInfo userInfo, SearchInfo searchInfo) {
 		// store user_id
 		String userID = userInfo.getUserID();		
 		// store game_id
@@ -26,14 +25,36 @@ public class FavouriteConnection {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
 			
-			// insert favourtire game to table link to user by user_id
-			PreparedStatement ps = con.prepareStatement(
-					"insert into favourite values(?,?)");  
-			ps.setString(1, userInfo.getUserID());  
-			ps.setString(2, searchInfo.getGameID());
-			ps.executeUpdate();
-			System.out.println("Added Games to favourites table");    
-		    // 
+			int quantity = 1;
+			float price = 0;
+			
+			// get object information from game table using game_id
+			PreparedStatement query = con.prepareStatement("SELECT * from game where game_id = ?");
+			query.setString(1, gameID); 
+		    resultSet = query.executeQuery();
+		    System.out.println("got game");
+		    while (resultSet.next()) {
+		    	price = Float.parseFloat(resultSet.getString("price"));
+		    }
+		    
+		    try {
+		    	// establish a connection with the db
+				con = DBConnection.createConnection();
+				
+				// insert game to cart table
+				PreparedStatement ps = con.prepareStatement(
+						"insert into cart values(?,?,?,?,?)");  
+				ps.setString(1, userInfo.getUserID());  
+				ps.setString(2, searchInfo.getGameID());
+				ps.setInt(3, quantity);
+				ps.setFloat(4, price);
+				ps.setBoolean(5, false);
+				ps.executeUpdate();
+				System.out.println("Added Game to cart table");    		
+		    }
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
 			return "SUCCESS"; 	
 		}
 		catch(SQLException e) {
@@ -43,7 +64,7 @@ public class FavouriteConnection {
 		return null; 
 	}
 
-	public ResultSet FavouriteGameCollection(LoginInfo userInfo) {
+	public ResultSet getCartGamesCollection(LoginInfo userInfo) {
 		// get user id
 		String userID = userInfo.getUserID();
 		// intialize connection
@@ -55,13 +76,11 @@ public class FavouriteConnection {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
 			//fetch  gameObject by game_id by sql query and store it in a resultSet
-		    PreparedStatement query = con.prepareStatement("SELECT game_id from favourite where user_id = ?");
+		    PreparedStatement query = con.prepareStatement("SELECT game_id from cart where user_id = ? and processed = ?");
 		    query.setString(1, userID);
+		    query.setBoolean(2, false);
 			resultSet = query.executeQuery();
-		    // found favourite games
-//			while(resultSet.next()) {
-//				System.out.println(resultSet.getString("game_id"));
-//			}
+		    System.out.println("found cart games");
 			return resultSet; 	
 		}
 		catch(SQLException e) {
@@ -71,29 +90,7 @@ public class FavouriteConnection {
 		return null; 
 	}
 
-	public ResultSet retriveFavouriteGames() {
-		// intialize connection
-		Connection con = null;
-		// intialize sql
-		ResultSet resultSet = null;		
-		// connect to DB
-		try {
-			// establish a connection with the db
-			con = DBConnection.createConnection();
-			//fetch  gameObject by game_id by sql query and store it in a resultSet
-		    PreparedStatement query = con.prepareStatement("SELECT * from game where discount > 0");
-			resultSet = query.executeQuery();
-		    // found games
-			return resultSet; 	
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-		// no match found
-		return null; 
-	}
-
-	public String RemoveFavouriteGame(LoginInfo userInfo, SearchInfo searchInfo) {
+	public String RemoveCartGame(LoginInfo userInfo, SearchInfo searchInfo) {
 		// store user_id
 		String userID = userInfo.getUserID();		
 		// store game_id
@@ -106,14 +103,15 @@ public class FavouriteConnection {
 		try {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
-			
-			// insert favourtire game to table link to user by user_id
+					
+			// remove game from cart table 
 			PreparedStatement ps = con.prepareStatement(
-					"delete from favourite where user_id = ? and game_id = ?");  
+					"delete from cart where user_id = ? and game_id = ? and processed = ?");  
 			ps.setString(1, userInfo.getUserID());  
 			ps.setString(2, searchInfo.getGameID());
+			ps.setBoolean(3, false);
 			ps.executeUpdate();
-			System.out.println("Removed Game from favourites table");    
+			System.out.println("Removed Game from cart table");    
 			return "SUCCESS"; 	
 		}
 		catch(SQLException e) {

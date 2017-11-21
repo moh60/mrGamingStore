@@ -21,7 +21,10 @@
 		<% if(request.getSession().getAttribute("userEmail") != null){  
 			out.print("<button class='game-favourite'><a href='AddToFavouriteServlet?game_id=" + gameInfo.getGameID() +
 					"&user_id=" + request.getSession().getAttribute("user_id") + 
-					"'class='game-favourite-link'>Add to favourites</a></button>");		
+					"'class='game-favourite-link'>Add to favourites</a></button>");
+			out.print("<button class='game-cart'><a href='AddToCartServlet?game_id=" + gameInfo.getGameID() +
+					"&user_id=" + request.getSession().getAttribute("user_id") + 
+					"'class='cart-link'>Add to Cart</a></button>");
 			}
 		%>
 		<% 

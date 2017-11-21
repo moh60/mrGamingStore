@@ -34,7 +34,9 @@
 						if(request.getSession().getAttribute("userEmail") != null){  
 							out.print("<a class='btn btn-primary btn-lg signup-button' href='LogoutServlet' role='button'>Logout</a>");				    
 						    out.print("<div id='menu-search' class='collapse'>" +
-			 						"<a href='DiscountsServlet'>Discounts</a></br>" +
+						    		"<a href=CartServlet?user_id=" 
+			 						+ request.getSession().getAttribute("user_id") + ">Cart</a></br>" +
+						    		"<a href='DiscountsServlet'>Discounts</a></br>" +
 		 							"<a href=FavouriteServlet?user_id=" 
 			 						+ request.getSession().getAttribute("user_id") + ">Favourites</a></br>" +
 			 						"<a href=LoadProfileServlet?user_id=" 

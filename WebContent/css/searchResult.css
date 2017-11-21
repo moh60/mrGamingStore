@@ -13,7 +13,7 @@
     box-shadow: 1px 1px 2px 2px darkslateblue;
     margin-bottom: 20px;
     overflow: hidden;
-    display: inline-block;
+    display: block;
 }
 .game-cover {
 	text-align: center;

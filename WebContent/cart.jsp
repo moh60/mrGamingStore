@@ -9,17 +9,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/searchResult.css">
-<title>Favourite</title>
+<title>Cart</title>
 </head>
 <body>
-<%List gamesList = (List)request.getAttribute("favouriteGames");%>
+<%List gamesList = (List)request.getAttribute("cart");%>
  <div class="game-result-wrapper">
     <% for(int i=0; i<gamesList.size(); i++){%>
 	    <div class="game-result">
 		    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
 		    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    
 			<span class="game-release"><%out.print(gameInfo.getGameReleaseDate().substring(0, gameInfo.getGameReleaseDate().indexOf("-"))); %></span>
-			<%out.print("<button class='remove-favourite'><a href='RemoveFavouriteServlet?game_id=" + gameInfo.getGameID() +
+			<%out.print("<button class='remove-favourite'><a href='RemoveCartServlet?game_id=" + gameInfo.getGameID() +
 					"&user_id=" + request.getSession().getAttribute("user_id") + 
 					"'class='game-favourite-link'>Remove</a></button>"); %>			
 			<h3 class="game-title"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></h3>
