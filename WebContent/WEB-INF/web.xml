@@ -187,6 +187,17 @@
   
   <servlet>
     <description></description>
+    <display-name>RemoveFavouriteServlet</display-name>
+    <servlet-name>RemoveFavouriteServlet</servlet-name>
+    <servlet-class>controller.RemoveFavouriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveFavouriteServlet</servlet-name>
+    <url-pattern>/RemoveFavouriteServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
     <display-name>AddToCartServlet</display-name>
     <servlet-name>AddToCartServlet</servlet-name>
     <servlet-class>controller.AddToCartServlet</servlet-class>
@@ -194,7 +205,8 @@
   <servlet-mapping>
     <servlet-name>AddToCartServlet</servlet-name>
     <url-pattern>/AddToCartServlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>  
+  
   
   <servlet>
     <description></description>
