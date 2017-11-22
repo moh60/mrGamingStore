@@ -240,4 +240,15 @@
     <servlet-name>SaveCartGameServlet</servlet-name>
     <url-pattern>/SaveCartGameServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>checkoutServlet</display-name>
+    <servlet-name>checkoutServlet</servlet-name>
+    <servlet-class>controller.checkoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>checkoutServlet</servlet-name>
+    <url-pattern>/checkoutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

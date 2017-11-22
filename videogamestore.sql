@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2017 at 06:15 PM
+-- Generation Time: Nov 22, 2017 at 01:48 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `videogamestore`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `user_id` varchar(100) NOT NULL,
+  `game_id` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT '1',
+  `price` double DEFAULT NULL,
+  `processed` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`user_id`, `game_id`, `quantity`, `price`, `processed`) VALUES
+('d593a994-5fcf-4435-b958-cd57516c1ecd', 'f660a994-b5df-11e7-abc4-cec278b6b50a', 1, 56, 0),
+('d593a994-5fcf-4435-b958-cd57516c1ecd', '0a3df864-b2f1-11e7-abc4-cec278b6b50a', 1, 24, 0);
 
 -- --------------------------------------------------------
 
@@ -55,10 +78,11 @@ CREATE TABLE IF NOT EXISTS `favourite` (
 INSERT INTO `favourite` (`user_id`, `game_id`) VALUES
 ('null', 'fea9fe24-b28e-11e7-abc4-cec278b6b50a'),
 ('null', 'fea9fe24-b28e-11e7-abc4-cec278b6b50a'),
-('65e013ac-8737-4b39-988e-01df812d2027', 'fea9fe24-b28e-11e7-abc4-cec278b6b50a'),
-('65e013ac-8737-4b39-988e-01df812d2027', 'fea9fe24-b28e-11e7-abc4-cec278b6b50a'),
+('null', 'fea9fe24-b28e-11e7-abc4-cec278b6b50a'),
 ('65e013ac-8737-4b39-988e-01df812d2027', '5adfeaa4-b2e0-11e7-abc4-cec278b6b50a'),
-('65e013ac-8737-4b39-988e-01df812d2027', '8929e5a0-b5dc-11e7-abc4-cec278b6b50a');
+('d593a994-5fcf-4435-b958-cd57516c1ecdclass=', 'f660a994-b5df-11e7-abc4-cec278b6b50a'),
+('d593a994-5fcf-4435-b958-cd57516c1ecdclass=', 'f660a994-b5df-11e7-abc4-cec278b6b50a'),
+('d593a994-5fcf-4435-b958-cd57516c1ecd', 'f660a994-b5df-11e7-abc4-cec278b6b50a');
 
 -- --------------------------------------------------------
 
@@ -149,6 +173,21 @@ INSERT INTO `game` (`game_id`, `game_name`, `game_description`, `console`, `num_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gameorder`
+--
+
+DROP TABLE IF EXISTS `gameorder`;
+CREATE TABLE IF NOT EXISTS `gameorder` (
+  `order_id` varchar(100) NOT NULL,
+  `user_id` varchar(100) NOT NULL,
+  `total` decimal(10,0) NOT NULL,
+  `timestamp` varchar(20) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `temporarylogin`
 --
 
@@ -196,9 +235,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `password`, `firstname`, `lastname`, `email`, `address1`, `address2`, `city`, `state`, `zip`, `country`, `credit_card_type`, `credit_card_number`, `credit_card_cvv`, `credit_card_expiry`, `last_login`, `lock_counter`, `isLocked`, `forgot_pass`, `Role`) VALUES
-('d593a994-5fcf-4435-b958-cd57516c1ecd', 'test', 'moh', 'raza', 'mohd_theo_60@hotmail.com', '990', 'cote', 'Montréal', 'quebec', 'h9b2n2', 'canada', 'master', '1234567891011121', '111', '04/2012', '2017.11.15.19.49.22', 0, 0, 0, 'admin'),
+('d593a994-5fcf-4435-b958-cd57516c1ecd', 'test', 'moh', 'raza', 'mohd_theo_60@hotmail.com', '990', 'cote', 'Montréal', 'quebec', 'h9b2n2', 'canada', 'master', '1234567891011121', '111', '04/2012', '2017.11.21.19.33.49', 0, 0, 0, 'admin'),
 ('d9223e7d-a4d5-4f53-be30-9ed62e4f6101', 'sarah1234', 'sarah', 'sajjad', 's@live.com', '990', 'cote vertu', 'Montréal', 'Quebec', 'h4l1y4', 'Canada', 'master', '5392586554369580', '333', '02/2020', '2017.10.26.00.16.23', 0, 1, 0, ''),
-('65e013ac-8737-4b39-988e-01df812d2027', 'test', 'Jay', 'Leee', 'j@lum.ca', '990', 'Henri Bourassaa', 'Montréall', 'Quebecc', 'h4l1y41', 'Canadaa', 'master', '444444444445', '322', '02/2021', '2017.11.15.18.51.40', 2, 0, 0, ''),
+('65e013ac-8737-4b39-988e-01df812d2027', 'test', 'Jay', 'Leee', 'j@lum.ca', '990', 'Henri Bourassaa', 'Montréall', 'Quebecc', 'h4l1y41', 'Canadaa', 'master', '444444444445', '322', '02/2021', '2017.11.21.19.33.38', 2, 0, 0, ''),
 ('363aa819-c169-48bf-88c6-dd3039b44545', 'test', 'Test', 'Last', 'test@live.ca', '890 ', 'henri', 'Montréal', 'quebec', 'h9b2n2', 'canada', 'master', '4444444444444', '321', '02/2020', '2017.11.15.18.55.23', 3, 0, 0, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
