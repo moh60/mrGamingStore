@@ -7,6 +7,8 @@
     <welcome-file>login.jsp</welcome-file>
     <welcome-file>passwordChange.jsp</welcome-file>
     <welcome-file>addGame.jsp</welcome-file>
+    <welcome-file>purchaseHistory.jsp</welcome-file>
+    <welcome-file>orderGames.jsp</welcome-file>
   </welcome-file-list>
  
   <servlet>
@@ -250,5 +252,27 @@
   <servlet-mapping>
     <servlet-name>checkoutServlet</servlet-name>
     <url-pattern>/checkoutServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>PurchaseServlet</display-name>
+    <servlet-name>PurchaseServlet</servlet-name>
+    <servlet-class>controller.PurchaseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PurchaseServlet</servlet-name>
+    <url-pattern>/PurchaseServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>LoadOrderGamesServlet</display-name>
+    <servlet-name>LoadOrderGamesServlet</servlet-name>
+    <servlet-class>controller.LoadOrderGamesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadOrderGamesServlet</servlet-name>
+    <url-pattern>/LoadOrderGamesServlet</url-pattern>
   </servlet-mapping>
 </web-app>

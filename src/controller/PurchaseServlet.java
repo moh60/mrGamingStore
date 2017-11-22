@@ -1,5 +1,9 @@
 package controller;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +23,26 @@ public class PurchaseServlet extends HttpServlet {
 		
 		//creating object for PurchaseConnection
 		PurchaseConnection purchaseConnection = new PurchaseConnection(); 
-		
+		ResultSet rs = purchaseConnection.getPurchaseHistory(userInfo);
+		List<Object> orders  = new ArrayList<Object>();
+		if(rs != null) {
+			try {
+				while(rs.next()) {
+					OrderInfo orderInfo = new OrderInfo(); 
+					orderInfo.setOrderID(rs.getString(1));
+					orderInfo.setUserID(rs.getString(2));
+					orderInfo.setTotal(Double.parseDouble(rs.getString(3)));
+					orderInfo.setTimestamp(rs.getString(4));
+					orders.add(orderInfo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("orders", orders);
+			request.getRequestDispatcher("purchaseHistory.jsp").forward(request, response);
+		}
+		else {
+			System.out.println("no orders found");
+		}
 	}
 }
