@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 import controller.LoginInfo;
 import controller.SearchInfo;
@@ -141,6 +144,60 @@ public class CartConnection {
 			ps.setString(7, gameInfo.getGameID());  
 			ps.setBoolean(8, false);  
 			ps.executeUpdate();  
+			return "SUCCESS"; 		
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// Error
+		return null; 
+	}
+
+	public String checkout(LoginInfo userInfo) {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		PreparedStatement ps = null;
+		//connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			String orderID = UUID.randomUUID().toString();
+			
+			// get all cart object
+			ResultSet rs = null;
+			ps = con.prepareStatement("select * from cart where user_id = ? and processed = ?");
+			ps.setString(1, userInfo.getUserID());
+			ps.setBoolean(2, false);
+			rs = ps.executeQuery();
+			
+			// go through each cart object
+			double total = 0;
+			while(rs.next()) {				
+				total+= Double.parseDouble(rs.getString("price"));
+				// insert game product objects to table
+				PreparedStatement s = con.prepareStatement(
+						"insert into gameproduct values (?,?)");
+				s.setString(1, orderID);
+				s.setString(2, rs.getString("game_id"));
+				s.executeUpdate();
+			}
+			
+			// insert game order object to table
+			try {
+				String orderDate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());;
+				PreparedStatement p = con.prepareStatement(
+						"insert into gameorder values(?,?,?,?)");  
+				p.setString(1, orderID);
+				p.setString(2, userInfo.getUserID());  
+				p.setDouble(3, total);
+				p.setString(4, orderDate);
+				p.executeUpdate();
+			}
+			
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
 			return "SUCCESS"; 		
 		}
 		catch(SQLException e) {
