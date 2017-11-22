@@ -175,8 +175,7 @@ public class CartConnection {
 			
 			// go through each cart object
 			while(rs.next()) {				
-				total+= Double.parseDouble(rs.getString("price"));
-				System.out.println(rs.getString("price"));
+				total+= Double.parseDouble(rs.getString("price")) * Integer.parseInt(rs.getString("quantity"));
 				// insert game product objects to table
 				PreparedStatement s = con.prepareStatement(
 						"insert into gameproduct values (?,?)");
@@ -192,20 +191,16 @@ public class CartConnection {
 				query.setString(3, rs.getString("game_id"));
 				query.setBoolean(4, false);
 				query.executeUpdate();
-				System.out.println("1");
 				
 				// get game object
 				PreparedStatement statement = con.prepareStatement("select * from game where game_id = ?");
 				statement.setString(1, rs.getString("game_id"));
 				ResultSet r = statement.executeQuery();
 				
-				System.out.println("2");
 				int game_quantity = 0; 
 				// update game quantity
 				while(r.next()){
-					game_quantity = Integer.parseInt(r.getString("quantity")); 
-					System.out.println("original game quantity " + game_quantity);
-					System.out.println("game cart quantity " + rs.getString("quantity"));					
+					game_quantity = Integer.parseInt(r.getString("quantity")); 					
 				}				
 				PreparedStatement q = con.prepareStatement("UPDATE game SET quantity = ? "
 						+ "WHERE game.game_id = ?");
