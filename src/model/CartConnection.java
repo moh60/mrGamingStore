@@ -163,8 +163,10 @@ public class CartConnection {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
 			String orderID = UUID.randomUUID().toString();
+			String userEmail = "";
+			double total = 0;
 			
-			// get all cart object
+			// get all cart items
 			ResultSet rs = null;
 			ps = con.prepareStatement("select * from cart where user_id = ? and processed = ?");
 			ps.setString(1, userInfo.getUserID());
@@ -172,17 +174,45 @@ public class CartConnection {
 			rs = ps.executeQuery();
 			
 			// go through each cart object
-			double total = 0;
 			while(rs.next()) {				
 				total+= Double.parseDouble(rs.getString("price"));
+				System.out.println(rs.getString("price"));
 				// insert game product objects to table
 				PreparedStatement s = con.prepareStatement(
 						"insert into gameproduct values (?,?)");
 				s.setString(1, orderID);
 				s.setString(2, rs.getString("game_id"));
 				s.executeUpdate();
-			}
-			
+				
+				// update unprocessed games to processed in cart table
+				PreparedStatement query = con.prepareStatement(" UPDATE cart "
+						+ "SET processed = ? WHERE cart.user_id = ? and cart.game_id = ? and cart.processed = ?"); 
+				query.setBoolean(1, true);
+				query.setString(2, userInfo.getUserID());
+				query.setString(3, rs.getString("game_id"));
+				query.setBoolean(4, false);
+				query.executeUpdate();
+				System.out.println("1");
+				
+				// get game object
+				PreparedStatement statement = con.prepareStatement("select * from game where game_id = ?");
+				statement.setString(1, rs.getString("game_id"));
+				ResultSet r = statement.executeQuery();
+				
+				System.out.println("2");
+				int game_quantity = 0; 
+				// update game quantity
+				while(r.next()){
+					game_quantity = Integer.parseInt(r.getString("quantity")); 
+					System.out.println("original game quantity " + game_quantity);
+					System.out.println("game cart quantity " + rs.getString("quantity"));					
+				}				
+				PreparedStatement q = con.prepareStatement("UPDATE game SET quantity = ? "
+						+ "WHERE game.game_id = ?");
+				q.setInt(1, game_quantity - Integer.parseInt(rs.getString("quantity")));
+				q.setString(2, rs.getString("game_id"));
+				q.executeUpdate();				
+			}			
 			// insert game order object to table
 			try {
 				String orderDate = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());;
@@ -198,7 +228,23 @@ public class CartConnection {
 			catch(SQLException e) {
 				e.printStackTrace();
 			}
-			return "SUCCESS"; 		
+			
+			// get user email
+			try {
+				PreparedStatement psq = con.prepareStatement(
+						"select * from users where user_id = ?");  
+				psq.setString(1, userInfo.getUserID());  
+				ResultSet rsq = psq.executeQuery();
+				
+				while (rsq.next()) {
+					userEmail = rsq.getString("email");
+				}			
+			}
+			
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+			return "SUCCESS " + userEmail + " " + orderID + " " + total; 		
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
