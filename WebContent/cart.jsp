@@ -17,20 +17,21 @@
     <% for(int i=0; i<gamesList.size(); i++){%>
 	    <div class="game-result">
 		    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
-		    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    
-
-			<span class="game-release"><%out.print(gameInfo.getGameQuantity()); %></span>
-
-			<span class="game-release"><%out.print(gameInfo.getGamePrice()); %></span>
-
-			<span class="game-release"><%out.print(gameInfo.getGameReleaseDate().substring(0, gameInfo.getGameReleaseDate().indexOf("-"))); %></span>
-
-			<%out.print("<button class='remove-favourite'><a href='RemoveCartServlet?game_id=" + gameInfo.getGameID() +
+		    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    			
+			<form name="form" action="SaveCartGameServlet" method="post">
+				<h3 class="game-title"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></h3>				
+				<input type="hidden" name="user_id" value="<%= request.getSession().getAttribute("user_id") %>" size="25" maxlength="20" />
+				<input type="hidden" name="game_id" value="<%= gameInfo.getGameID()%>" size="25" maxlength="20" />
+				<input type="text" name="game_quantity" value="<%= gameInfo.getGameQuantity() %>" size="5" maxlength="20" placeholder="Quantity" class="game-quantity" />
+				<input type="hidden" class="game-price" name="game_price" value="<%= gameInfo.getGamePrice()%>"></input>
+				<input type="text" class="game-sub-total" name="game_sub_total" value="<%= Integer.parseInt(gameInfo.getGamePrice()) * Double.parseDouble(gameInfo.getGameQuantity()) %>"></input>
+				<button class="glyphicon glyphicon-save" id="save-cart-game"></button>	
+				<%out.print("<button class='remove-game'><a href='RemoveCartServlet?game_id=" + gameInfo.getGameID() +
 					"&user_id=" + request.getSession().getAttribute("user_id") + 
-					"'class='game-favourite-link'>Remove</a></button>"); %>			
-			<h3 class="game-title"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></h3>
-	      </div> 
-      <%}%>
+					"'class='glyphicon glyphicon-remove'></a></button>"); %>							
+			</form>
+      </div> 
+    <%}%>
  </div>
 </body>
 </html>

@@ -120,4 +120,33 @@ public class CartConnection {
 		// ERROR
 		return null; 
 	}
+
+	public String saveCartGame(LoginInfo userInfo, SearchInfo gameInfo) {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		PreparedStatement ps = null;
+		//connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			ps = con.prepareStatement(
+			"UPDATE cart SET user_id = ?, game_id = ?, quantity = ?, price = ?, processed = ?  WHERE cart.user_id = ? and cart.game_id = ? and cart.processed = ?" );  
+			ps.setString(1, userInfo.getUserID());  
+			ps.setString(2, gameInfo.getGameID());  
+			ps.setInt(3, Integer.parseInt(gameInfo.getGameQuantity()));
+			ps.setDouble(4, Double.parseDouble(gameInfo.getGamePrice()));  
+			ps.setBoolean(5, false);  
+			ps.setString(6, userInfo.getUserID());  
+			ps.setString(7, gameInfo.getGameID());  
+			ps.setBoolean(8, false);  
+			ps.executeUpdate();  
+			return "SUCCESS"; 		
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// Error
+		return null; 
+	}
 }

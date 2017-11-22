@@ -1,17 +1,11 @@
 package controller;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CartConnection;
-import model.GameConnection;
 
 public class RemoveCartServlet extends HttpServlet {
 
@@ -30,7 +24,7 @@ public class RemoveCartServlet extends HttpServlet {
 		CartConnection cartConnection = new CartConnection(); 
 		String removeCartGame = cartConnection.RemoveCartGame(userInfo,searchInfo); 
 		if(removeCartGame.equals("SUCCESS")) {			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("CartServlet?user_id=" + userID);
 		}
 		else {
 			System.out.println("error while adding favourite games!");

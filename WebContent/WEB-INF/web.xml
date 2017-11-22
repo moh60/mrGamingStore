@@ -229,4 +229,15 @@
     <servlet-name>RemoveCartServlet</servlet-name>
     <url-pattern>/RemoveCartServlet</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>SaveCartGameServlet</display-name>
+    <servlet-name>SaveCartGameServlet</servlet-name>
+    <servlet-class>controller.SaveCartGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveCartGameServlet</servlet-name>
+    <url-pattern>/SaveCartGameServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
