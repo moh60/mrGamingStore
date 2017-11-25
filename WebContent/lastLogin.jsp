@@ -15,12 +15,18 @@
 <%List userList = (List)request.getAttribute("users");%>
  <div class="users-result-wrapper">
  <table>
+ 	<tr class="user-headers">
+	 	<th class="user-headers">Email</th>
+	 	<th class="user-headers">Orders</th>
+	 	<th class="user-headers">Last Login</th>
+ 	</tr>
     <% for(int i=0; i<userList.size(); i++){%>
-	    <tr class="user-result">
+	    <tr class="user-headers">
 		    <% SignUpInfo userInfo = (SignUpInfo)userList.get(i); %>
-			<td class="user-email"><a href="LoadProfileServlet?user_id=<%out.print(userInfo.getUser_id());%>"><%out.print(userInfo.getUserEmail()); %></a></td>
-			<td class="user-purchase"><a href="PurchaseServlet?user_id=<%out.print(userInfo.getUser_id());%>">Purchase History</a></td>
-			<td class="user-last-login"><%out.print(userInfo.getUserLastLogin()); %></td>
+			<td class="user-headers"><a href="LoadProfileServlet?user_id=<%out.print(userInfo.getUser_id());%>"><%out.print(userInfo.getUserEmail()); %></a></td>
+			
+			<td class="user-headers"><a href="PurchaseServlet?user_id=<%out.print(userInfo.getUser_id());%>">Purchase History</a></td>
+			<td class="user-headers"><%out.print(userInfo.getUserLastLogin()); %></td>
 	      </tr> 
       <%}%>
     </table>

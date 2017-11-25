@@ -1,17 +1,10 @@
 .users-result-wrapper {
 	margin: 20px auto;
 }
-.user-result {
-	border: 2px solid orange;
-}
-.user-email {
+.user-headers {
 	padding: 5px;
-    border-right: 2px solid darkgreen;
+    border: 2px solid orange;
 }
-.user-purchase {
-	padding: 5px;
-    border-right: 2px solid darkgreen;
-}
-.user-last-login {
-	padding: 5px;
+.user-headers a {
+	color: black !important;
 }
