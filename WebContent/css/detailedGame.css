@@ -39,3 +39,25 @@
 .logo {
 	
 }
+.game-button {
+	background-color: limegreen;
+    outline: none;
+    border: none;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+#game-plus {
+   	color: white;
+    font-family: inherit;
+    font-weight: bold;
+    vertical-align: text-top;
+    margin-right: 5px;
+}
+.function-link {
+	color: white;
+	font-weight: bold;
+}
+.function-link:hover {
+	color: yellow;
+	font-weight: bold;
+}

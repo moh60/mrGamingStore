@@ -64,11 +64,12 @@ public class PurchaseConnection {
 				    q.setString(1, resultSet.getString("game_id")); 
 				    r = q.executeQuery();
 				    while (r.next()) {
-				    	System.out.println(r.getString("game_id"));
-				    	System.out.println(r.getString("game_name"));
 				    	SearchInfo gameInfo = new SearchInfo(); 
-						gameInfo.setGameID(r.getString("game_id"));
-						gameInfo.setGameName(r.getString("game_name"));
+				    	gameInfo.setGameID(r.getString(1));
+						gameInfo.setGameName(r.getString(2));
+						gameInfo.setGameDescription(r.getString(3));
+						gameInfo.setGameReleaseDate(r.getString(8));
+						gameInfo.setGameFrontBoxArt(r.getString(11));
 						games.add(gameInfo);
 				    }
 		    	}

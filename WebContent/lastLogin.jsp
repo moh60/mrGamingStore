@@ -8,25 +8,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/lastLogin.css">
+<link rel="stylesheet" type="text/css" href="css/tableResult.css">
 <title>Last Login</title>
 </head>
 <body>
 <%List userList = (List)request.getAttribute("users");%>
- <div class="users-result-wrapper">
+ <div class="table-wrapper">
  <table>
- 	<tr class="user-headers">
-	 	<th class="user-headers">Email</th>
-	 	<th class="user-headers">Orders</th>
-	 	<th class="user-headers">Last Login</th>
+ 	<tr class="table-headers">
+	 	<th class="table-headers">Email</th>
+	 	<th class="table-headers">Orders</th>
+	 	<th class="table-headers">Last Login</th>
  	</tr>
     <% for(int i=0; i<userList.size(); i++){%>
-	    <tr class="user-headers">
+	    <tr class="table-headers">
 		    <% SignUpInfo userInfo = (SignUpInfo)userList.get(i); %>
-			<td class="user-headers"><a href="LoadProfileServlet?user_id=<%out.print(userInfo.getUser_id());%>"><%out.print(userInfo.getUserEmail()); %></a></td>
+			<td class="table-headers"><a href="LoadProfileServlet?user_id=<%out.print(userInfo.getUser_id());%>"><%out.print(userInfo.getUserEmail()); %></a></td>
 			
-			<td class="user-headers"><a href="PurchaseServlet?user_id=<%out.print(userInfo.getUser_id());%>">Purchase History</a></td>
-			<td class="user-headers"><%out.print(userInfo.getUserLastLogin()); %></td>
+			<td class="table-headers"><a href="PurchaseServlet?user_id=<%out.print(userInfo.getUser_id());%>">Purchase History</a></td>
+			<td class="table-headers"><%out.print(userInfo.getUserLastLogin()); %></td>
 	      </tr> 
       <%}%>
     </table>

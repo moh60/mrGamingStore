@@ -8,19 +8,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/searchResult.css">
+<link rel="stylesheet" type="text/css" href="css/tableResult.css">
 <title>Inventory</title>
 </head>
 <body>
 <%List gamesList = (List)request.getAttribute("games");%>
- <div class="game-result-wrapper">
+ <div class="table-wrapper">
  <table>
+ 	<tr>
+ 	<th class="table-headers">Game Name</th>
+ 	<th class="table-headers">Quantity</th>
+ 	</tr>
     <% for(int i=0; i<gamesList.size(); i++){%>
-	    <tr class="game-result">
+	    <tr class="table-headers">
 		    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
-			<td class="game-title"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></td>
-			<td class="game-quantity"><%out.print(gameInfo.getGameQuantity()); %></td>
-	      </tr> 
+			<td class="table-headers"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></td>
+			<td class="table-headers"><%out.print(gameInfo.getGameQuantity()); %></td>
+      	</tr> 
       <%}%>
     </table>
  </div>

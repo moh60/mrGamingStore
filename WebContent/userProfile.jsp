@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/signup.css">
+<link rel="stylesheet" type="text/css" href="css/defaultForm.css">
 <title>Profile</title>
 </head>
 <body>
 <%List userList = (List)request.getAttribute("user");%>
-<div class="main">
-	<div class="user-wrapper">
+<div class="main-wrapper">
+	<div class="text">Profile</div>
 	   <% for(int i=0; i<userList.size(); i++){%>
 	   		<% SignUpInfo signUpInfo = (SignUpInfo)userList.get(i); %>
 				<form name="form" action="updateProfileServlet" method="post">
@@ -29,17 +29,16 @@
 					<input type="text" name="state" value="<%= signUpInfo.getUserState()%>" size="25" maxlength="20" placeholder="State" class="user-info" /><br/>	
 					<input type="text" name="zip" value="<%= signUpInfo.getZip()%>" size="25" maxlength="20" placeholder="Zip" class="user-info"  /><br/>
 					<input type="text" name="country" value="<%= signUpInfo.getUserCountry()%>"size="25" maxlength="20" placeholder="Country" class="user-info"  /><br/>
-					<input type="text" name="credit_card_type" class="credit-type" id="credit-input"  value="<%= signUpInfo.getUserCCtype()%>"size="25" maxlength="20" placeholder="Credit Card Type" class="user-info"  /><br/>
-					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCnumber()%>"placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" size="25" id="credit-input" /><br/>										
-					<input type="text" value="<%= signUpInfo.getUserCCcvv()%>" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" id="credit-input" />						
-					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCexpiry()%>" name="credit_card_expiry" size="16" id="credit-input"/><br/>
+					<input type="text" name="credit_card_type" value="<%= signUpInfo.getUserCCtype()%>"size="25" maxlength="20" placeholder="Credit Card Type" class="user-info"  /><br/>
+					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCnumber()%>"placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" size="25" class="user-info" /><br/>										
+					<input type="text" value="<%= signUpInfo.getUserCCcvv()%>" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" class="user-info" />						
+					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCexpiry()%>" name="credit_card_expiry" size="16" class="user-info"/><br/>
 					<%if(request.getSession().getAttribute("Role").equals("admin"))
 						out.print("<input class='user-info' type='text' placeholder='Account Lock = 1 / Unlock = 0' value='" + signUpInfo.getIsLocked() + "' name='isLocked' size='25' id='isLocked-input'/><br/>");
 					 %>
 					<!-- submit sign up form -->
-					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" />						
+					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button"/>						
 				</form>
-	</div>
 </div>		
 <%}%>
 </body>

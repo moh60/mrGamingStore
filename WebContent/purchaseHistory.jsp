@@ -8,23 +8,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/orderHistory.css">
+<link rel="stylesheet" type="text/css" href="css/tableResult.css">
 <title>Orders</title>
 </head>
 <body>
 <%List ordersList = (List)request.getAttribute("orders");%>
- <div class="order-result-wrapper">
- <table>
+<div class="table-wrapper">
+	<table>
+	  	<tr class="table-headers">
+		 	<th class="table-headers">Order ID</th>
+		 	<!-- <th class="table-headers">User ID</th> -->
+		 	<th class="table-headers">Total</th>
+		 	<th class="table-headers">Timestamp</th> 	
+	 	</tr>
+	
     <% for(int i=0; i<ordersList.size(); i++){%>
-	    <tr class="order-result">
-		    <% OrderInfo orderInfo = (OrderInfo)ordersList.get(i); %>
-			<td class="order-id"><a href="LoadOrderGamesServlet?order_id=<%out.print(orderInfo.getOrderID());%>"><%out.print(orderInfo.getOrderID()); %></a></td>
-			<td class="user-id"><%out.print(orderInfo.getUserID()); %></td>
-			<td class="order-total"><%out.print(orderInfo.getTotal()); %></td>
-			<td class="order-timestamp"><%out.print(orderInfo.getTimestamp()); %></td>
-	     </tr> 
-    <%}%>
-    </table>
- </div>
+		<tr class="table-headers">
+		 <% OrderInfo orderInfo = (OrderInfo)ordersList.get(i); %>
+		<td class="table-headers"><a href="LoadOrderGamesServlet?order_id=<%out.print(orderInfo.getOrderID());%>"><%out.print(orderInfo.getOrderID()); %></a></td>
+		<!-- <td class="table-headers"><%out.print(orderInfo.getUserID()); %></td> -->
+		<td class="table-headers">$<%out.print(orderInfo.getTotal()); %></td>
+		<td class="table-headers"><%out.print(orderInfo.getTimestamp()); %></td>
+		</tr> 
+	<%}%>
+	</table>
+</div>
 </body>
 </html>

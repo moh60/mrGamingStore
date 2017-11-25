@@ -1,0 +1,15 @@
+.table-wrapper {
+	margin: 20px auto;
+	padding-left: 20px;
+}
+.table-headers {
+	padding: 5px;
+    border: 2px solid orange;
+}
+.table-headers a {
+	color: black !important;
+}
+.table-headers a:hover {
+	color: red !important;
+	background: yellow;
+}

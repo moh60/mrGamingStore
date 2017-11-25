@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/signup.css">
+<link rel="stylesheet" type="text/css" href="css/defaultForm.css">
 <title>Add Game</title>
 </head>
 <body>
-<div class="main">
+<div class="main-wrapper">
+	<div class="text">Add Game</div>
 	<form name="form" action="AddGameServlet" method="post">
 		<input type="text" name="game_name" value="" size="25" maxlength="20" placeholder="Game Name" class="user-info"  /><br/>
 		<input type="text" name="game_description" value="" size="25" maxlength="20" placeholder="Game Description" class="user-info"  /><br/>
@@ -22,14 +23,14 @@
 		<input type="text" name="publisher" value="" size="25" maxlength="20" placeholder="Publisher" class="user-info"  /><br/>
 		<input type="text" name="front_box_art" value=""size="25" maxlength="20" placeholder="Front box art" class="user-info"  /><br/>
 		<input type="text" name="back_box_art" value=""size="25" maxlength="20" placeholder="Back box art" class="user-info"  /><br/>
-		<input type="text" name="logo" class="credit-type" id="credit-input"  value="" size="25" placeholder="Logo" class="user-info"  /><br/>
-		<input type="text" name="developer_logo" class="credit-type" id="credit-input"  value="" size="25" placeholder="Developer Logo" class="user-info"  /><br/>
-		<input type="text" name="price" class="credit-type" id="credit-input"  value="" size="25" placeholder="Price" class="user-info"  /><br/>
-		<input type="text" name="discount" class="credit-type" id="credit-input"  value="" size="25" placeholder="Discount" class="user-info"  /><br/>
-		<input type="text" name="quantity" class="credit-type" id="credit-input"  value="" size="25" placeholder="Quantity" class="user-info"  /><br/>
+		<input type="text" name="logo" value="" size="25" placeholder="Logo" class="user-info"  /><br/>
+		<input type="text" name="developer_logo" value="" size="25" placeholder="Developer Logo" class="user-info"  /><br/>
+		<input type="text" name="price" value="" size="25" placeholder="Price" class="user-info"  /><br/>
+		<input type="text" name="discount" value="" size="25" placeholder="Discount" class="user-info"  /><br/>
+		<input type="text" name="quantity" value="" size="25" placeholder="Quantity" class="user-info"  /><br/>
 		
 		<!-- submit add game form -->
-		<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" />						
+		<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button" />						
 	</form>
 </div>
 </body>
