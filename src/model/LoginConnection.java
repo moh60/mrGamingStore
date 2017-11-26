@@ -41,8 +41,7 @@ public class LoginConnection {
 				if (resultSet.getBoolean("forgot_pass")) {
 					userEmailDB = resultSet.getString("email"); 
 					String updatedPassDB = "";
-					Date tmpDate;
-					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+					Date tmpDate = null;
 					Date currentDate = new Date();
 					userID = resultSet.getString("user_id");
 					String userRole = resultSet.getString("Role");
@@ -53,8 +52,12 @@ public class LoginConnection {
 						updatedPassDB = rs.getString("password");
 						tmpDate = rs.getDate("timestamp");						
 					}
+					
+					long MILLIS_PER_DAY = 24 * 60 * 60 * 1000L;
+					boolean moreThan24Hours = Math.abs(currentDate.getTime() - tmpDate.getTime()) > MILLIS_PER_DAY;
+					
 					// check if tmp date is less then current date by 24hrs
-					if(userEmail.equals(userEmailDB) && password.equals(updatedPassDB)) {
+					if(userEmail.equals(userEmailDB) && password.equals(updatedPassDB) && moreThan24Hours == false ) {
 						// remove temporary user info
 						ps = con.prepareStatement("Delete from temporarylogin where user_id = ?");
 						ps.setString(1, userID);
@@ -71,7 +74,10 @@ public class LoginConnection {
 						ps.executeUpdate();						
 						System.out.println("User logged in with temporary password");
 						return "SUCCESS:" + userID + ":" + userRole; 
-					}	 
+					}
+					else {
+						return ("LOCKED");
+					}
 				}
 				
 				// if user account is not locked

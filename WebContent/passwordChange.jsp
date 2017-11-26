@@ -5,13 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/defaultForm.css">
 <title>Reset Password</title>
 </head>
 <body>
+<div class="main-wrapper">	
+	<div class="text">Forgot Password</div>
 	<form name="form" action="passwordChangeServlet" method="post">
 		<input type="text" name="email" size="25" placeholder="Enter your email" class="user-info" id="user-email"/>
 		<br/>
-		<input type="submit" value="Submit" class="btn btn-primary btn-lg submit-button"></input>
+		<input type="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button"></input>
 	</form>
+</div>
 </body>
 </html>

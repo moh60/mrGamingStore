@@ -27,26 +27,35 @@ public class temporaryChangeConnection {
 		try {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
+			
+			//remove any previous temporary user entry
+			PreparedStatement p = con.prepareStatement("Delete from temporarylogin where email = ?");
+			p.setString(1, userEmail);
+			p.executeUpdate();	
+			
+			// get user info
 			PreparedStatement query = con.prepareStatement("SELECT * from Users where email = ?");
 			query.setString(1, userEmail); 
 		    resultSet = query.executeQuery();
-			//fetch the values present in database
+			
+		    //fetch the values present in database
 			while(resultSet.next()) {
 			user_id_DB = resultSet.getString("user_id"); 
 			userPassDB = "test"; // random create password
 			}			
-			System.out.println(user_id_DB);
 			
 			//  create temporary user
 			ps = con.prepareStatement(
-					"insert into temporarylogin values(?,?,?)");  
+					"insert into temporarylogin values(?,?,?,?)");  
 			ps.setString(1, user_id_DB);  
 			ps.setString(2, userPassDB);  
 			ps.setString(3, dateDB);  		
+			ps.setString(4, userEmail);
 			int i = ps.executeUpdate();  
 			if(i>0) {
 				System.out.println("Successfully registered temporary user");  
 			}
+			
 			// unlock user and set forgot pass
 			ps = con.prepareStatement("UPDATE users SET isLocked = ?, forgot_pass = ?  WHERE users.email = ?");
 			ps.setInt(1, 0);
