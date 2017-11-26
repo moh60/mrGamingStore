@@ -17,7 +17,11 @@ public class SignUpInfo {
 	private String userCCcvv;
 	private String userCCexpiry;
 	private String userLastLogin;
+	private int lockCounter;	
 	private String isLocked;
+	private int forgotPass;
+	private String role;
+	private int discountValue;
 	
 	public String getUserFirstName() {
 		return userFirstName;
@@ -120,6 +124,30 @@ public class SignUpInfo {
 	}
 	public void setIsLocked(String isLocked) {
 		this.isLocked = isLocked;
+	}
+	public int getLockCounter() {
+		return lockCounter;
+	}
+	public void setLockCounter(int lockCounter) {
+		this.lockCounter = lockCounter;
+	}
+	public int getForgotPass() {
+		return forgotPass;
+	}
+	public void setForgotPass(int forgotPass) {
+		this.forgotPass = forgotPass;
+	}
+	public int getDiscountValue() {
+		return discountValue;
+	}
+	public void setDiscountValue(int discountValue) {
+		this.discountValue = discountValue;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }

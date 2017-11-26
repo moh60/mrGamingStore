@@ -33,6 +33,11 @@ public class SignUpServlet extends HttpServlet {
 		String userCCcvv = request.getParameter("credit_card_cvv");
 		String userCCexpiry = request.getParameter("credit_card_expiry_month")+"/"+request.getParameter("credit_card_expiry_year");
 		String userLastLogin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());;
+		int lockCounter = 0;
+		String isLocked = "0";
+		int forgotPass = 0;
+		String role = "normal";
+		int discountValue = 0;
 		
 		// object which contains user's sign up information
 		SignUpInfo signUpInfo = new SignUpInfo(); 
@@ -53,6 +58,11 @@ public class SignUpServlet extends HttpServlet {
 		signUpInfo.setUserCCcvv(userCCcvv);
 		signUpInfo.setUserCCexpiry(userCCexpiry);
 		signUpInfo.setUserLastLogin(userLastLogin);
+		signUpInfo.setLockCounter(lockCounter);
+		signUpInfo.setIsLocked(isLocked);
+		signUpInfo.setForgotPass(forgotPass);
+		signUpInfo.setRole(role);
+		signUpInfo.setDiscountValue(discountValue);
 		
 		SignUpConnection signUpConnection= new SignUpConnection(); 
 		String registerUser = 	signUpConnection.registerUser(signUpInfo);

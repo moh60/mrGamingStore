@@ -21,7 +21,7 @@ public class SignUpConnection {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
 			ps = con.prepareStatement(
-					"insert into users values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");  
+					"insert into users values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");  
 			ps.setString(1, signUpInfo.getUser_id());  
 			ps.setString(2, signUpInfo.getUserPassword());  
 			ps.setString(3, signUpInfo.getUserFirstName());  
@@ -38,6 +38,11 @@ public class SignUpConnection {
 			ps.setString(14, signUpInfo.getUserCCcvv());  
 			ps.setString(15, signUpInfo.getUserCCexpiry());  
 			ps.setString(16, signUpInfo.getUserLastLogin());
+			ps.setInt(17, signUpInfo.getLockCounter());
+			ps.setInt(18, Integer.parseInt(signUpInfo.getIsLocked()));
+			ps.setInt(19, signUpInfo.getForgotPass());
+			ps.setString(20, signUpInfo.getRole());
+			ps.setInt(21, signUpInfo.getDiscountValue());
 
 			int i = ps.executeUpdate();  
 			if(i>0) {
