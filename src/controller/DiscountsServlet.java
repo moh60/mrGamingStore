@@ -4,19 +4,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import model.GameConnection;
+import model.SignUpConnection;
 
 public class DiscountsServlet extends HttpServlet {
 
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// get admin set discount value
+		SignUpConnection discountInfo = new SignUpConnection();
+		int discountValue = discountInfo.getDiscountValue();
+		
 		//creating object for GameConnection which contains main logic for retriving detailed game information
 		GameConnection gameConnection = new GameConnection(); 
 		//Calling authenticateUser function
-		ResultSet gameObject = gameConnection.retriveDiscountGames(); 
+		ResultSet gameObject = gameConnection.retriveDiscountGames(discountValue); 
 		List<Object> dicountGames  = new ArrayList<Object>();
 		if(gameObject != null) {
 			try {

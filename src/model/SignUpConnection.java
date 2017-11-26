@@ -115,5 +115,52 @@ public class SignUpConnection {
 		}
 		// no match found
 		return null; 
+	}
+
+	public String updateDiscountValue(SignUpInfo discountInfo) {
+		// intialize connection
+		Connection con = null;
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			// update admin discount value
+		    PreparedStatement query = con.prepareStatement("Update users SET discount_value = ? where Role = ?");
+			query.setInt(1, discountInfo.getDiscountValue());
+			query.setString(2, "admin");		    
+		    query.executeUpdate();
+			return "SUCCESS"; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no match found
+		return null; 
+	}
+
+	public int getDiscountValue() {
+		// intialize connection
+		Connection con = null;
+		// intialize sql
+		ResultSet resultSet = null;		
+		// connect to DB
+		try {
+			// establish a connection with the db
+			con = DBConnection.createConnection();
+			//fetch admin userObject and store it in a resultSet
+		    PreparedStatement query = con.prepareStatement("Select * from users where Role = ?");
+			query.setString(1, "admin");		    
+		    resultSet = query.executeQuery();
+		    int discountValue = 0;
+		    while(resultSet.next()) {
+		    	discountValue = Integer.parseInt(resultSet.getString("discount_value"));
+		    }	
+		    return discountValue; 	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// no match found
+		return 0; 
 	}	
 }

@@ -37,7 +37,7 @@ public class GameConnection {
 		return null; 
 	}
 	
-	public ResultSet retriveDiscountGames() {
+	public ResultSet retriveDiscountGames(int discountValue) {
 		// intialize connection
 		Connection con = null;
 		// intialize sql
@@ -47,7 +47,8 @@ public class GameConnection {
 			// establish a connection with the db
 			con = DBConnection.createConnection();
 			//fetch  gameObject by game_id by sql query and store it in a resultSet
-		    PreparedStatement query = con.prepareStatement("SELECT * from game where discount > 0");
+		    PreparedStatement query = con.prepareStatement("SELECT * from game where discount > ?");
+		    query.setInt(1, discountValue);
 			resultSet = query.executeQuery();
 		    // found games
 			return resultSet; 	

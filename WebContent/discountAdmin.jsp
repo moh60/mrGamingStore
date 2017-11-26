@@ -15,7 +15,7 @@
 <div class="main-wrapper">	
 	<div class="text">Discount Value</div>
 	<form name="form" action="UpdateDiscountValue" method="post">
-		<input type="text" name="discount_amount" value="" size="25" maxlength="20" placeholder="Discount Value" class="user-info" /><br/>
+		<input type="text" name="discount_value" value="" size="25" maxlength="20" placeholder="Discount Value" class="user-info" /><br/>
 		<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button" />						
 	</form>
 <div class="game-result-wrapper">

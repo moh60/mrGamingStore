@@ -275,4 +275,15 @@
     <servlet-name>LoadOrderGamesServlet</servlet-name>
     <url-pattern>/LoadOrderGamesServlet</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>UpdateDiscountValue</display-name>
+    <servlet-name>UpdateDiscountValue</servlet-name>
+    <servlet-class>controller.UpdateDiscountValue</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDiscountValue</servlet-name>
+    <url-pattern>/UpdateDiscountValue</url-pattern>
+  </servlet-mapping>
 </web-app>
