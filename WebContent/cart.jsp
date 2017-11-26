@@ -22,40 +22,43 @@
 	<div class="tab-content">	    
 		<div id="tab1" class="tab active">
 			<%List gamesList = (List)request.getAttribute("cart");%>
-			<div class="game-result-wrapper">
+			<div class="game-result-wrapper-2">
 		    <% for(int i=0; i<gamesList.size(); i++){%>
 			    <div class="game-result">
 				    <% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
 				    <div class="game-cover"><img src="<%=gameInfo.getGameFrontBoxArt()%>" class="front-box-art" height="102" width="102" alt="gameCover"></div>		    			
-					<form name="form" action="SaveCartGameServlet" method="post">
+					<%out.print("<button id='remove-cart-game'><a href='RemoveCartServlet?game_id=" + gameInfo.getGameID() +
+							"&user_id=" + request.getSession().getAttribute("user_id") + 
+							"'class='glyphicon glyphicon-trash' id='link'></a></button>"); %>	
+					<form name="form" action="SaveCartGameServlet" method="post">						
+						<button class="glyphicon glyphicon-save" id="save-cart-game"></button>							
 						<h3 class="game-title"><a href="GameServlet?game_id=<%=gameInfo.getGameID()%>" class="game-title-link"><%out.print(gameInfo.getGameName().toUpperCase()); %></a></h3>				
 						<input type="hidden" name="user_id" value="<%= request.getSession().getAttribute("user_id") %>" size="25" maxlength="20" />
 						<input type="hidden" name="game_id" value="<%= gameInfo.getGameID()%>" size="25" maxlength="20" />
 						<input type="text" name="game_quantity" value="<%= gameInfo.getGameQuantity() %>" size="5" maxlength="20" placeholder="Quantity" class="game-quantity" />
 						<input type="hidden" class="game-price" name="game_price" value="<%= gameInfo.getGamePrice()%>"></input>
-						<input type="text" class="game-sub-total" name="game_sub_total" value="<%= Integer.parseInt(gameInfo.getGamePrice()) * Double.parseDouble(gameInfo.getGameQuantity()) %>"></input>
-						<button class="glyphicon glyphicon-save" id="save-cart-game"></button>	
-						<%out.print("<button class='remove-game'><a href='RemoveCartServlet?game_id=" + gameInfo.getGameID() +
-							"&user_id=" + request.getSession().getAttribute("user_id") + 
-							"'class='glyphicon glyphicon-remove'></a></button>"); %>							
+						<input type="text" class="game-sub-total" name="game_sub_total" value="$<%= Integer.parseInt(gameInfo.getGamePrice()) * Double.parseDouble(gameInfo.getGameQuantity()) %>" size="5" disabled="disabled"></input>
+											
 					</form>
 			 	</div> 
 			<%}%>
 			</div>   
 		</div>
 		<div id="tab2" class="tab">
-			<select name="credit_card_type" class="credit-type" id="credit-input">
-				<option value="" disabled selected>Select Credit Card Type</option>
-			    <option value="master">Master Card</option>
-			    <option value="visa">Visa</option>
-			</select><br/>
-			<input class="inputCard" type="text" placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" id="credit-input" /><br/>										
-			<input type="text" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" id="credit-input" />						
-			<input class="inputCard" type="text" placeholder="mm" name="credit_card_expiry_month" size="4" maxlength="2" id="credit-input"/>
-			<input class="inputCard" type="text" placeholder="yyyy" name="credit_card_expiry_year" size="4" maxlength="4" id="credit-input"/><br/>			
-			<button class="game-checkout">
-		    	<a href="checkoutServlet?user_id=<%=request.getSession().getAttribute("user_id")%>">Checkout</a>
-		    </button>	
+			<div class="payment-wrapper">
+				<select name="credit_card_type" class="credit-type" id="credit-input">
+					<option value="" disabled selected>Select Credit Card Type</option>
+				    <option value="master">Master Card</option>
+				    <option value="visa">Visa</option>
+				</select>
+				<input class="inputCard" type="text" placeholder="Cerdit Card Number" name="credit_card_number" maxlength="16" id="credit-input" /><br/>										
+				<input type="text" placeholder="cvv" name="credit_card_cvv" size="3" maxlength="3" id="credit-input" />						
+				<input class="inputCard" type="text" placeholder="mm" name="credit_card_expiry_month" size="4" maxlength="2" id="credit-input"/>
+				<input class="inputCard" type="text" placeholder="yyyy" name="credit_card_expiry_year" size="4" maxlength="4" id="credit-input"/><br/>			
+				<button class="btn btn-primary btn-lg submit-button" id="submit-button">
+			    	<a href="checkoutServlet?user_id=<%=request.getSession().getAttribute("user_id")%>" id="link">Checkout</a>
+			    </button>	
+		    </div>
 		</div>
 	</div>
 </div>

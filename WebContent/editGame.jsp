@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/signup.css">
+<link rel="stylesheet" type="text/css" href="css/defaultForm.css">
 <title>Edit Game</title>
 </head>
 <body>
 <%List gameList = (List)request.getAttribute("games");%>
-<div class="main">
-	<div class="user-wrapper">
+<div class="main-wrapper">
+	<div class="text">Edit Game</div>
 	   <% for(int i=0; i<gameList.size(); i++){%>
 	   		<% SearchInfo gameInfo = (SearchInfo)gameList.get(i); %>
 				<form name="form" action="UpdateGameServlet" method="post">
@@ -30,15 +30,14 @@
 					<input type="text" name="publisher" value="<%= gameInfo.getGamePublisher()%>" size="25" maxlength="20" placeholder="Publisher" class="user-info"  /><br/>
 					<input type="text" name="front_box_art" value="<%= gameInfo.getGameFrontBoxArt()%>"size="25" maxlength="20" placeholder="Front box art" class="user-info"  /><br/>
 					<input type="text" name="back_box_art" value="<%= gameInfo.getGameBackBoxArt()%>"size="25" maxlength="20" placeholder="Back box art" class="user-info"  /><br/>
-					<input type="text" name="logo" class="user-info" value="<%= gameInfo.getGameLogo()%>" size="25" placeholder="Logo" class="user-info"  /><br/>
-					<input type="text" name="developer_logo" class="user-info" value="<%= gameInfo.getGameDeveloperLogo()%>" size="25" placeholder="Developer Logo" class="user-info"  /><br/>
-					<input type="text" name="price" class="user-info" value="<%= gameInfo.getGamePrice()%>" size="25" placeholder="Price" class="user-info"  /><br/>
-					<input type="text" name="discount" class="user-info" value="<%= gameInfo.getGameDiscount()%>" size="25" placeholder="Discount" class="user-info"  /><br/>
-					<input type="text" name="quantity" class="user-info"  value="<%= gameInfo.getGameQuantity()%>" size="25" placeholder="Quantity" class="user-info"  /><br/>
+					<input type="text" name="logo" value="<%= gameInfo.getGameLogo()%>" size="25" placeholder="Logo" class="user-info"  /><br/>
+					<input type="text" name="developer_logo" value="<%= gameInfo.getGameDeveloperLogo()%>" size="25" placeholder="Developer Logo" class="user-info"  /><br/>
+					<input type="text" name="price" value="<%= gameInfo.getGamePrice()%>" size="25" placeholder="Price" class="user-info"  /><br/>
+					<input type="text" name="discount" value="<%= gameInfo.getGameDiscount()%>" size="25" placeholder="Discount" class="user-info"  /><br/>
+					<input type="text" name="quantity" value="<%= gameInfo.getGameQuantity()%>" size="25" placeholder="Quantity" class="user-info"  /><br/>
 					<!-- submit sign up form -->
-					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" />						
+					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button" />						
 				</form>
-	</div>
 </div>		
 <%}%>
 </body>

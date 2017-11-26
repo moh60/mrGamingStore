@@ -48,8 +48,6 @@
 }
 #game-plus {
    	color: white;
-    font-family: inherit;
-    font-weight: bold;
     vertical-align: text-top;
     margin-right: 5px;
 }
@@ -57,7 +55,7 @@
 	color: white;
 	font-weight: bold;
 }
-.function-link:hover {
+.function-link:hover, .function-link:focus  {
 	color: yellow;
 	font-weight: bold;
 }

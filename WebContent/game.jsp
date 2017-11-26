@@ -19,10 +19,10 @@
 	   <div class="game-head">
 	<% SearchInfo gameInfo = (SearchInfo)gamesList.get(i); %>
 		<% if(request.getSession().getAttribute("userEmail") != null){  
-			out.print("<button class='game-button'><span class='glyphicon glyphicon-plus' id='game-plus'></span><a href='AddToFavouriteServlet?game_id=" + gameInfo.getGameID() +
+			out.print("<button class='game-button'><span class='glyphicon glyphicon-star' id='game-plus'></span><a href='AddToFavouriteServlet?game_id=" + gameInfo.getGameID() +
 					"&user_id=" + request.getSession().getAttribute("user_id") + 
 					"'class='function-link'>Add to favourites</a></button>");
-			out.print("<button class='game-button'><span class='glyphicon glyphicon-plus' id='game-plus'></span><a href='AddToCartServlet?game_id=" + gameInfo.getGameID() +
+			out.print("<button class='game-button'><span class='glyphicon glyphicon-shopping-cart' id='game-plus'></span><a href='AddToCartServlet?game_id=" + gameInfo.getGameID() +
 					"&user_id=" + request.getSession().getAttribute("user_id") + 
 					"'class='function-link'>Add to Cart</a></button>");
 			}
@@ -31,7 +31,7 @@
 		// edit game button
 		try{
 			if(request.getSession().getAttribute("Role").equals("admin")){
-				out.print("<button class='game-button'><span class='glyphicon glyphicon-plus' id='game-plus'></span><a href='loadGameServlet?game_id=" + gameInfo.getGameID() + 
+				out.print("<button class='game-button'><span class='glyphicon glyphicon-pencil' id='game-plus'></span><a href='loadGameServlet?game_id=" + gameInfo.getGameID() + 
 						"'class='function-link'>Edit Game</a></button>");
 			}
 		}
