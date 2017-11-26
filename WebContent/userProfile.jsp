@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/defaultForm.css">
-<title>Profile</title>
+<title>Update Profile</title>
 </head>
 <body>
 <%List userList = (List)request.getAttribute("user");%>
@@ -35,6 +35,8 @@
 					<input class="user-info" type="text" value="<%= signUpInfo.getUserCCexpiry()%>" name="credit_card_expiry" size="16" class="user-info"/><br/>
 					<%if(request.getSession().getAttribute("Role").equals("admin"))
 						out.print("<input class='user-info' type='text' placeholder='Account Lock = 1 / Unlock = 0' value='" + signUpInfo.getIsLocked() + "' name='isLocked' size='25' id='isLocked-input'/><br/>");
+
+						else out.print("<input class='user-info' type='hidden' placeholder='Account Lock = 1 / Unlock = 0' value='" + signUpInfo.getIsLocked() + "' name='isLocked' size='25' id='isLocked-input'/><br/>");
 					 %>
 					<!-- submit sign up form -->
 					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button"/>						
