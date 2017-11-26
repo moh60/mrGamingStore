@@ -286,4 +286,15 @@
     <servlet-name>UpdateDiscountValue</servlet-name>
     <url-pattern>/UpdateDiscountValue</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>SendDiscountServlet</display-name>
+    <servlet-name>SendDiscountServlet</servlet-name>
+    <servlet-class>controller.SendDiscountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendDiscountServlet</servlet-name>
+    <url-pattern>/SendDiscountServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

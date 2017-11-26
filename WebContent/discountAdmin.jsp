@@ -18,7 +18,12 @@
 		<input type="text" name="discount_value" value="" size="25" maxlength="20" placeholder="Discount Value" class="user-info" /><br/>
 		<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg submit-button" id="submit-button" />						
 	</form>
-<div class="game-result-wrapper">
+</div>
+<div class="main-wrapper">	
+	<div class="text">Send Discount Mail</div>
+	<form name="form" action="SendDiscountServlet" method="post">
+		<input type="submit" name="submit" value="Send" class="btn btn-primary btn-lg submit-button" id="submit-button" />						
+	</form>
  </div>
 </body>
 </html>
