@@ -1,4 +1,10 @@
 @CHARSET "ISO-8859-1";
+#admin-button {
+	display: none;
+}
+#menu-button {
+	display: none;
+}
 #menu-search {
 	margin-top: 5px;
 }
