@@ -29,21 +29,23 @@ public class SendDiscountServlet extends HttpServlet {
 		GameConnection gameConnection = new GameConnection(); 
 		// get all discounted games
 		ResultSet gameObject = gameConnection.retriveDiscountGames(discountValue); 
-		
+		// for each discounted game, get title
+		List <String> discountedGames = new ArrayList<String>();
+		try {
+			while (gameObject.next()) {
+				discountedGames.add(gameObject.getString("game_name"));
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		// for each user send list of discounted games via email
 		try {
 			while (registeredUsers.next()) {
 				String toEmail = registeredUsers.getString("email");
 				String subject = "Discounted Games";
-				String msg = "";
-				List <String> discountedGames = new ArrayList<String>();
-				
-				// for each discounted game, get title
-				while (gameObject.next()) {
-					discountedGames.add(gameObject.getString("game_name"));
-				}
-				
-				msg = discountedGames.toString();
+				String msg = "";		
+				msg = "Discounted Games: " +  discountedGames.toString();
+				System.out.println(msg);
 				
 				// send mail
 				Mail.sendEmail(toEmail, subject, msg);
