@@ -16,8 +16,10 @@ function validate() {
 	var password = document.form.password.value; 
 	var firstname = document.form.firstname.value;
 	var lastname = document.form.lastname.value;
-	if (password=="" || firstname=="" || lastname=="") { 
+	var creditCardNum = document.form.credit_card_number.value;
+	if (password=="" || firstname=="" || lastname=="" || creditCardNum=="") { 
 		document.form.password.focus();
+		console.log("missing sign up fields")
 		return false;
 	} 
 }
