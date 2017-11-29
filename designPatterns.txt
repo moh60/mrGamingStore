@@ -1,0 +1,39 @@
+1) MVC: primary pattern used accross the entire application
+
+2) Transaction Script(TS): signgle request for the presentation
+
+- loading all the purchased games for a specific order / specific user (user_id)
+- loading all the discounted games - based on a given discount value
+- loading list of all the games in the DB with their corresponding quantity value
+- loading list of all favourited games for a specific user
+- loading list of games in users cart
+- add new user / game
+
+3) Row Data Gateway(RDG): an object that acts a gateway to a single record in a data source. There is one instance per row
+
+- used for loading detailed information for a specific game
+- used for editing an existing game
+- used for editing user profile
+- used for deleting games from cart and favourites for specific user
+- login / forgotpass
+
+4) Table Data Gateway(TDG):an object that acts as a gateway to a database table. one instance handles all the rows in the table.
+
+- search engine
+
+5) Server Session State: keeps the session state on a server system in a serialized form
+
+- stored user role, to differentiate between admin, registered user, and anaoymus user
+- stored user id and user email
+
+6) Singleton Pattern: global point of access to the object
+
+- used for creating DB connection
+
+7) Active Record: adds domain logic on that data
+
+- updating game quantity when user updates game quantity in their cart
+
+8) Registry: find common objects
+
+- used for finding all the order objects for a specifc user - purchase history
